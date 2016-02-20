@@ -40,7 +40,12 @@ a {
 }
 
 .homepage-image {
-  max-height: 290px;
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+}
+.card {
+  height: 290px;
 }
 
 .race-info * {
