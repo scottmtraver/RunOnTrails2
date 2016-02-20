@@ -8,30 +8,30 @@ var express = require('express'),
 
 function isLoggedIn(req, res, next) {
 
-    // if user is authenticated in the session, carry on 
-    if (req.isAuthenticated())
-        return next();
+  // if user is authenticated in the session, carry on 
+  if (req.isAuthenticated())
+    return next();
 
-    // if they aren't redirect them to the home page
-    res.redirect('/admin/login');
+  // if they aren't redirect them to the home page
+  res.redirect('/admin/login');
 }
-
 module.exports = function (app) {
   app.use('/admin', router);
 };
+
 //Login/Logout
 //Default User
 router.get('/initialize', function(req, res, next) {
-    Account.register(new Account({ username : 'runontrails' }), 'runontrails', function(err, account) {
-        passport.authenticate('local')(req, res, function () {
-            req.session.save(function (err) {
-                if (err) {
-                    return next(err);
-                }
-                res.redirect('/admin');
-            });
-        });
+  Account.register(new Account({ username : 'runontrails' }), 'runontrails', function(err, account) {
+    passport.authenticate('local')(req, res, function () {
+      req.session.save(function (err) {
+        if (err) {
+          return next(err);
+        }
+        res.redirect('/admin');
+      });
     });
+  });
 });
 router.get('/login', function(req, res) {
   res.render('admin/login', { user : req.user, layout: 'admin', error: req.flash('error') });
@@ -44,15 +44,15 @@ router.post('/login', passport.authenticate('local', {
 }));
 
 router.get('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/');
+  req.logout();
+  res.redirect('/');
 });
 
 
 router.get('/', isLoggedIn, function (req, res, next) {
-    res.render('admin/index', {
-      title: 'Wasatch Trail Series Admin',
-      layout: 'admin'
+  res.render('admin/index', {
+    title: 'Wasatch Trail Series Admin',
+    layout: 'admin'
   });
 });
 //sponsors
@@ -111,29 +111,29 @@ router.post('/sponsor', isLoggedIn, function (req, res, next) {
 });
 //races
 router.get('/races', isLoggedIn, function (req, res, next) {
-    res.render('admin/races', {
-      title: 'Wasatch Trail Series Admin: Races',
-      layout: 'admin'
+  res.render('admin/races', {
+    title: 'Wasatch Trail Series Admin: Races',
+    layout: 'admin'
   });
 });
 router.get('/race/:id', isLoggedIn, function (req, res, next) {
-    res.render('admin/race', {
-      title: 'Wasatch Trail Series Admin: Races',
-      layout: 'admin'
+  res.render('admin/race', {
+    title: 'Wasatch Trail Series Admin: Races',
+    layout: 'admin'
   });
 });
 router.post('/race/:id', isLoggedIn, function (req, res, next) {
   //redirect?
-    res.render('admin/race', {
-      title: 'Wasatch Trail Series Admin: Races',
-      layout: 'admin'
+  res.render('admin/race', {
+    title: 'Wasatch Trail Series Admin: Races',
+    layout: 'admin'
   });
 });
 //venues
 router.get('/venues', isLoggedIn, function (req, res, next) {
   Venue.find({}).then(function (venues) {
     res.render('admin/venues', {
-      title: 'Wasatch Trail Series Admin: Sponsors',
+      title: 'Wasatch Trail Series Admin: Venue',
       layout: 'admin',
       venues: venues
     });
@@ -143,19 +143,20 @@ router.get('/venue/:id', isLoggedIn, function (req, res, next) {
   if(req.params.id && req.params.id != 0) {
     Venue.findById(req.params.id).then(function (venue) {
       res.render('admin/venue', {
-        title: 'Wasatch Trail Series Admin: Venues',
+        title: 'Wasatch Trail Series Admin: Venue',
         layout: 'admin',
         venue: venue
       });
     });
   } else {
-    res.render('admin/venue', isLoggedIn, {
-      title: 'Wasatch Trail Series Admin: Venues',
+    res.render('admin/venue', {
+      title: 'Wasatch Trail Series Admin: Venue',
       layout: 'admin',
       venue: {}
     });
   }
 });
+
 router.post('/venue', isLoggedIn, function (req, res, next) {
   var filename;
   if(req.file) {
@@ -185,3 +186,5 @@ router.post('/venue', isLoggedIn, function (req, res, next) {
     });
   }
 });
+
+
