@@ -37,6 +37,17 @@ router.get('/series', function (req, res, next) {
   });
 });
 
+router.get('/results', function (req, res, next) {
+  Sponsor.find(function (err, sponsors) {//get all
+    if (err) return next(err);
+    res.render('results', {
+      title: 'Wasatch Trail Series',
+      sponsors: sponsors
+    });
+  });
+});
+
+
 router.get('/race/:id', function (req, res, next) {
   Sponsor.find(function (err, sponsors) {//get all
     if (err) return next(err);
