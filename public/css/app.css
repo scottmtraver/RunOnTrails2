@@ -1,8 +1,61 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.main {
+  position: relative;
+  top: -400px;
+}
+
+.hero-image {
+  background-image: url("../img/wasatchRunning.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+}
+
+.hero-flipper {
+  height: 300px;
+  margin-bottom: 75px;
+  background-color: white;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.hero-flipper-mobile {
+  height: 100px;
+  background-color:cyan;
+  margin-bottom: 20px;
+}
+
+.homepage-image {
+  max-height: 290px;
+}
+
+.race-info * {
+  display: block;
+}
+
+.race-info {
+  display: inline-block;
+  font-size: 1.5em;
+}
+.venue-image {
+  max-width: 200px;
+  display: block;
+  margin: auto;
+}
+.race-special {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.home-main {
+  background-color: white;
+  padding: 15px;
+
 }
