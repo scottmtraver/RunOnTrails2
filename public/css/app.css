@@ -20,7 +20,7 @@ a {
 
 .hero-flipper {
   height: 300px;
-  margin-bottom: 75px;
+  margin-bottom: 50px;
   background-color: white;
   border: 1px solid black;
   padding: 5px;
@@ -28,8 +28,15 @@ a {
 
 .hero-flipper-mobile {
   height: 100px;
-  background-color:cyan;
+  background-color:white;
   margin-bottom: 20px;
+  display: inline-block;
+}
+.hero-flipper-mobile * {
+  display: block;
+}
+.hero-flipper-mobile a {
+  text-align: center;
 }
 
 .homepage-image {
@@ -49,13 +56,25 @@ a {
   display: block;
   margin: auto;
 }
+.venue-image-mobile {
+  max-width: 50px;
+  display: block;
+  margin: auto;
+}
 .race-special {
   text-align: center;
   margin-top: 15px;
 }
 
-.home-main, .sponsor-main {
+.home-main, .sponsor-main, .race-main, .admin-main {
   background-color: white;
   padding: 15px;
 }
 
+.owl-buttons {
+  display: none;
+}
+.owl-page span {
+  background-color: #009BDB !important;
+
+}
