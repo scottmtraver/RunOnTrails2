@@ -34,8 +34,9 @@ router.get('/sponsor/:id', function (req, res, next) {
 router.post('/sponsor', function (req, res, next) {
   var filename;
   if(req.file) {
-    //process file
+    filename = req.file.filename;
   }
+  res.redirect('/admin/sponsors');
   if(!req.body.id || req.body.id == 0) {
     var sponsor = new Sponsor({
       name: req.body.name,
@@ -49,7 +50,6 @@ router.post('/sponsor', function (req, res, next) {
   } else {
 
   }
-  res.redirect('/admin/sponsors');
 });
 //races
 router.get('/races', function (req, res, next) {

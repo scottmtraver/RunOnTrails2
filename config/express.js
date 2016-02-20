@@ -11,6 +11,8 @@ var exphbs  = require('express-handlebars');
 
 var flash = require('connect-flash');
 var multer = require('multer');
+var crypto = require('crypto');
+var mime = require('mime');
 
 module.exports = function(app, config) {
   var env = process.env.NODE_ENV || 'development';
@@ -39,7 +41,7 @@ module.exports = function(app, config) {
   //Multer
   var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, './public/images/')
+      cb(null, './public/uploads/')
     },
     filename: function (req, file, cb) {
       crypto.pseudoRandomBytes(16, function (err, raw) {
@@ -49,7 +51,7 @@ module.exports = function(app, config) {
   });
   var upload = multer({ storage: storage });
 
-  app.use(upload.single('image'));
+  app.use(upload.single('fileupload'));
 
 
   var controllers = glob.sync(config.root + '/app/controllers/*.js');
