@@ -1,32 +1,37 @@
 <div class="row admin-main">
   <div class="large-12 columns">
     <h4>Create/Edit Venue</h4>
-    <form>
+    <form method="post" action="/admin/venue" enctype="multipart/form-data" >
+      <input type="hidden" name="id" value="{{ venue.id }}"/>
       <div class="row">
         <div class="large-12 columns">
           <label>Venue
-            <input type="text" placeholder="(Name)" />
+            <input type="text" placeholder="(Name)" name="name" value="{{ venue.name }}" />
           </label>
         </div>
       </div>
       <div class="row">
         <div class="large-4 columns">
           <label>Link
-            <input type="text" placeholder="(Url)" />
+            <input type="text" placeholder="(Link)" name="url" value="{{ venue.url }}" />
           </label>
         </div>
         <div class="large-4 columns">
           <label>Directions Link
-            <input type="text" placeholder="(Maps Url)" />
+            <input type="text" placeholder="(Directions)" name="directionsUrl" value="{{ venue.directionsUrl }}" />
           </label>
         </div>
         <div class="large-4 columns">
           <label>Logo
-            <input type="file" placeholder="(Image)" />
+            <input type="file" placeholder="(Image)" name="fileupload"/>
+            {{#if venue.logoUrl }}
+              <img class="logo-tiny" src="/uploads/{{ venue.logoUrl }}" alt="Logo" />
+            {{/if}}
           </label>
         </div>
       </div>
       <input type="submit" value="Submit" class="button"/>
+      <a href="/admin/venues" class="button">Cancel</a>
     </form>
   </div>
 </div>

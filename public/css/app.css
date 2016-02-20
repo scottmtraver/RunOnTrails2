@@ -83,3 +83,11 @@ a {
   background-color: #009BDB !important;
 
 }
+
+.logo-tiny {
+  width: 50px;
+
+}
+.admin-venue-logo, .admin-sponsor-logo {
+  width: 150px;
+}

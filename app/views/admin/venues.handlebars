@@ -13,11 +13,17 @@
         </th>
       </thead>
       <tbody>
-        <tr> <td>Snowbird</td> <td>image</td> <td><a href="google.com" _target="blank"></a></td><td><a href="google.com" _target="blank"</a></td>
-          <td><a href="#">Edit</a></td> </tr>
+        {{#each venues }}
+          <tr>
+            <td>{{ name }}</td>
+            <td><img src="/uploads/{{ logoUrl }}" alt="Logo" class="admin-venue-logo" /></td>
+            <td><a href="{{ url }}" target="_blank">{{ url }}</a></td>
+            <td><a href="{{ directionsUrl }}" target="_blank">Directions</a></td>
+            <td><a href="/admin/venue/{{ id }}">Edit</a></td>
+          </tr>
+        {{/each}}
       </tbody>
     </table>
-
   </div>
 </div>
 
