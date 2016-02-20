@@ -14,6 +14,8 @@ var multer = require('multer');
 var crypto = require('crypto');
 var mime = require('mime');
 
+var passport = require('passport');
+
 module.exports = function(app, config) {
   var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
@@ -52,6 +54,18 @@ module.exports = function(app, config) {
   var upload = multer({ storage: storage });
 
   app.use(upload.single('fileupload'));
+
+  //passport local config
+  var passport = require('passport');
+  var LocalStrategy = require('passport-local').Strategy;
+  app.use(require('express-session')({
+      secret: 'keyboard cat',
+      resave: false,
+      saveUninitialized: false
+  }));
+  app.use(flash());
+  app.use(passport.initialize());
+  app.use(passport.session());
 
 
   var controllers = glob.sync(config.root + '/app/controllers/*.js');

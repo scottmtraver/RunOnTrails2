@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="large-4 columns large-centered">
+    <h4>Admin Login</h4>
+    {{#if error}}
+      <span class="error">{{ error }}</span> 
+    {{/if}}
+    <form method="post" action="/admin/login">
+      <p><input type="text" name="username" value="" placeholder="Username"></p>
+      <p><input type="password" name="password" value="" placeholder="Password"></p>
+      <button class="submit button">Login</button>
+    </form>
+  </div>
+</div>
+
+
