@@ -26,12 +26,16 @@
         <div class="large-6 columns">
           <label>Logo
             <input type="file" placeholder="(Image)" name="fileupload"/>
+            {{#if sponsor.logoUrl }}
+              <img class="logo-tiny" src="/uploads/{{ sponsor.logoUrl }}" alt="Logo" />
+            {{/if}}
           </label>
         </div>
       </div>
       <div class="row">
         <div class="large-12 columns">
           <input type="submit" value="Submit" class="button"/>
+          <a href="/admin/sponsors" class="button">Cancel</a>
         </div>
       </div>
     </form>

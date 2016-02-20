@@ -17,7 +17,6 @@ router.get('/', function (req, res, next) {
 //sponsors
 router.get('/sponsors', function (req, res, next) {
   Sponsor.find({}).then(function (sponsors) {
-    console.log(sponsors);
     res.render('admin/sponsors', {
       title: 'Wasatch Trail Series Admin: Sponsors',
       layout: 'admin',
@@ -26,17 +25,27 @@ router.get('/sponsors', function (req, res, next) {
   });
 });
 router.get('/sponsor/:id', function (req, res, next) {
+  if(req.params.id) {
+    Sponsor.findById(req.params.id).then(function (sponsor) {
+      res.render('admin/sponsor', {
+        title: 'Wasatch Trail Series Admin: Sponsors',
+        layout: 'admin',
+        sponsor: sponsor
+      });
+    });
+  } else {
     res.render('admin/sponsor', {
       title: 'Wasatch Trail Series Admin: Sponsors',
-      layout: 'admin'
-  });
+      layout: 'admin',
+      sponsor: {}
+    });
+  }
 });
 router.post('/sponsor', function (req, res, next) {
   var filename;
   if(req.file) {
     filename = req.file.filename;
   }
-  res.redirect('/admin/sponsors');
   if(!req.body.id || req.body.id == 0) {
     var sponsor = new Sponsor({
       name: req.body.name,
@@ -46,9 +55,17 @@ router.post('/sponsor', function (req, res, next) {
     sponsor.save().then(function () {
       res.redirect('/admin/sponsors');
     });
-
   } else {
-
+    Sponsor.findById(req.body.id).then(function (sponsor) {
+      sponsor.name = req.body.name;
+      sponsor.url = req.body.url;
+      if(filename) {
+        sponsor.logoUrl = filename;
+      }
+      sponsor.save().then(function () {
+        res.redirect('/admin/sponsors');
+      });
+    });
   }
 });
 //races
