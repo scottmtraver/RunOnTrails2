@@ -12,7 +12,14 @@
         </th>
       </thead>
       <tbody>
-        <tr> <td>First Race of the Season</td> <td>12/12/12</td> <td>Snowbird</td><td><a href="#">Edit</a></td> </tr>
+        {{#each races }}
+          <tr>
+            <td>{{ name }}</td>
+            <td>{{ date }}</td>
+            <td>{{ venue.name }}</td>
+            <td><a href="/admin/race/{{ id }}">Edit</a></td>
+          </tr>
+        {{/each}}
       </tbody>
     </table>
 

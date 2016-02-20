@@ -4,6 +4,7 @@ var express = require('express'),
   mongoose = require('mongoose'),
   Venue = mongoose.model('Venue'),
   Account = mongoose.model('Account'),
+  Race = mongoose.model('Race'),
   Sponsor = mongoose.model('Sponsor');
 
 function isLoggedIn(req, res, next) {
@@ -111,23 +112,84 @@ router.post('/sponsor', isLoggedIn, function (req, res, next) {
 });
 //races
 router.get('/races', isLoggedIn, function (req, res, next) {
-  res.render('admin/races', {
-    title: 'Wasatch Trail Series Admin: Races',
-    layout: 'admin'
+  Race.find({}).then(function (races) {
+    res.render('admin/races', {
+      title: 'Wasatch Trail Series Admin: Sponsors',
+      layout: 'admin',
+      races: races
+    });
   });
 });
 router.get('/race/:id', isLoggedIn, function (req, res, next) {
-  res.render('admin/race', {
-    title: 'Wasatch Trail Series Admin: Races',
-    layout: 'admin'
-  });
+  if(req.params.id && req.params.id != 0) {
+    Race.findById(req.params.id).then(function (race) {
+      Venue.find({}).then(function (venues) {
+        res.render('admin/race', {
+          title: 'Wasatch Trail Series Admin: Sponsors',
+          layout: 'admin',
+          race: race,
+          venueList: venues
+        });
+      });
+    });
+  } else {
+    Venue.find({}).then(function (venues) {
+      res.render('admin/race', {
+        title: 'Wasatch Trail Series Admin: Sponsors',
+        layout: 'admin',
+        race: {},
+        venueList: venues
+      });
+    });
+  }
 });
-router.post('/race/:id', isLoggedIn, function (req, res, next) {
-  //redirect?
-  res.render('admin/race', {
-    title: 'Wasatch Trail Series Admin: Races',
-    layout: 'admin'
-  });
+router.post('/race', isLoggedIn, function (req, res, next) {
+  var filename;
+  if(req.file) {
+    filename = req.file.filename;
+  }
+  if(!req.body.id || req.body.id == 0) {
+    Venue.findById(req.body.venueID).then(function (venue) {
+      var race = new Race({
+        name: req.body.name,
+        date: req.body.date,
+        seriesNum: req.body.seriesNum,
+        registrationTime: req.body.registrationTime,
+        startTime: req.body.startTime,
+        cost: req.body.cost,
+        distances: req.body.distances,
+        courseUrl: filename,
+        courseDescription: req.body.courseDescription,
+        special: req.body.special,
+        venue: venue
+      });
+      race.save().then(function () {
+        res.redirect('/admin/races');
+      });
+    });
+  } else {
+    Race.findById(req.body.id).then(function (race) {
+      Venue.findById(req.body.venueID).then(function (venue) {
+        race.name = req.body.name;
+        race.date = req.body.date;
+        race.seriesNum = req.body.seriesNum;
+        race.registrationTime = req.body.registrationTime;
+        race.startTime = req.body.startTime;
+        race.cost = req.body.cost;
+        race.distances = req.body.distances;
+        if(filename) {
+          race.courseUrl = filename;
+        }
+        race.courseDescription = req.body.courseDescription;
+        race.special = req.body.special;
+        race.venue = venue;
+
+        race.save().then(function () {
+          res.redirect('/admin/races');
+        });
+      });
+    });
+  }
 });
 //venues
 router.get('/venues', isLoggedIn, function (req, res, next) {

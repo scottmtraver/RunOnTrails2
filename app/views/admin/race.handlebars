@@ -1,59 +1,79 @@
 <div class="row admin-main">
   <div class="large-12 columns">
     <h4>Create/Edit Race</h4>
-    <form>
+    <form id="raceForm" method="post" action="/admin/race" enctype="multipart/form-data" >
+      <input type="hidden" name="id" value="{{ race.id }}"/>
       <div class="row">
         <div class="large-12 columns">
           <label>Race Name
-            <input type="text" placeholder="(Name)" />
+            <input type="text" placeholder="(Name)" name="name" value="{{ race.name }}" />
           </label>
         </div>
       </div>
       <div class="row">
-        <div class="large-4 columns">
+        <div class="large-3 columns">
           <label>Date
-            <input type="text" placeholder="(Date)" />
+            <input id="datepicker" type="text" placeholder="(Date)" name="date" value="{{ race.date }}" class="date-slash" />
           </label>
         </div>
-        <div class="large-4 columns">
+        <div class="large-3 columns">
+          <label>Series Number
+            <input type="text" placeholder="(Series#)" name="seriesNum" value="{{ race.seriesNum }}" />
+          </label>
+        </div>
+        <div class="large-3 columns">
           <label>Registration Time
-            <input type="text" placeholder="(Image)" />
+            <input type="text" placeholder="(Time)" name="registrationTime" value="{{ race.registrationTime }}" />
           </label>
         </div>
-        <div class="large-4 columns">
+        <div class="large-3 columns">
           <label>Start Time
-            <input type="text" placeholder="(Image)" />
+            <input type="text" placeholder="(Start Time)" name="startTime" value="{{ race.startTime }}" />
           </label>
         </div>
         <div class="large-2 columns">
           <label>Cost
-            <input type="text" placeholder="(Image)" />
+            <input type="text" placeholder="(Cost)" name="cost" value="{{ race.cost }}" />
           </label>
         </div>
         <div class="large-6 columns">
           <label>Race Special
-            <input type="text" placeholder="(Image)" />
+            <input type="text" placeholder="(Special)" name="special" value="{{ race.special }}" />
           </label>
         </div>
         <div class="large-4 columns">
           <label>Venue
-            <input type="text" placeholder="(Image)" />
+            <input id="venueID" value="{{ race.venue._id }}" type="hidden" />
+            <select class="venue-selector" name="venueID">
+              {{#each venueList }}
+              <option value="{{ id }}">{{ name }}</option>
+              {{/each}}
+            </select>
+          </label>
+        </div>
+        <div class="large-8 columns">
+          <label>Distances 
+            <input type="text" placeholder="(Distance)" name="distances" value="{{ race.distances }}" />
           </label>
         </div>
         <div class="large-8 columns">
           <hr/>
           <label>Course Description
-            <textarea></textarea>
+            <textarea form="raceForm" value="{{ race.courseDescription }}" name="courseDescription">{{ race.courseDescription }}</textarea>
           </label>
         </div>
         <div class="large-4 columns">
           <hr />
           <label>Course Image
-            <input type="file" placeholder="(Image)" />
+            <input type="file" placeholder="(Course Image)" name="fileupload" />
+            {{#if race.courseUrl }}
+              <img src="/uploads/{{ race.courseUrl }}" alt="Logo" />
+            {{/if}}
           </label>
         </div>
       </div>
       <input type="submit" value="Submit" class="button"/>
+      <a href="/admin/races" class="button">Cancel</a>
     </form>
   </div>
 </div>
