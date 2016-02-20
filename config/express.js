@@ -9,6 +9,9 @@ var compress = require('compression');
 var methodOverride = require('method-override');
 var exphbs  = require('express-handlebars');
 
+var flash = require('connect-flash');
+var multer = require('multer');
+
 module.exports = function(app, config) {
   var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
@@ -24,7 +27,6 @@ module.exports = function(app, config) {
 
   // app.use(favicon(config.root + '/public/img/favicon.ico'));
   app.use(logger('dev'));
-  app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
     extended: true
   }));
@@ -32,6 +34,23 @@ module.exports = function(app, config) {
   app.use(compress());
   app.use(express.static(config.root + '/public'));
   app.use(methodOverride());
+  app.use(flash());
+
+  //Multer
+  var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './public/images/')
+    },
+    filename: function (req, file, cb) {
+      crypto.pseudoRandomBytes(16, function (err, raw) {
+        cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
+      });
+    }
+  });
+  var upload = multer({ storage: storage });
+
+  app.use(upload.single('image'));
+
 
   var controllers = glob.sync(config.root + '/app/controllers/*.js');
   controllers.forEach(function (controller) {

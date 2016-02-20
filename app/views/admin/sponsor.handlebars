@@ -1,27 +1,39 @@
+{{#if message }}
+  <div data-alert class="alert-box success radius">
+    {{ message }}
+    <a href="#" class="close">&times;</a>
+  </div>
+{{/if}}
+
 <div class="row admin-main">
-  <div class="large-12 columns">
+    <div class="large-12 columns">
     <h4>Create/Edit Sponsor</h4>
-    <form>
+    <form method="post" action="/admin/sponsor" enctype="multipart/form-data" >
+      <input type="hidden" name="id" value="{{ sponsor.id }}"/>
       <div class="row">
         <div class="large-12 columns">
           <label>Sponsor Name
-            <input type="text" placeholder="(Name)" />
+            <input type="text" placeholder="(Name)" name="name" value="{{ sponsor.name }}" />
           </label>
         </div>
       </div>
       <div class="row">
-        <div class="large-4 columns">
+        <div class="large-6 columns">
           <label>Link
-            <input type="text" placeholder="(Url)" />
+            <input type="text" placeholder="(Url)" name="url" value="{{ sponsor.url }}"/>
           </label>
         </div>
-        <div class="large-4 columns">
+        <div class="large-6 columns">
           <label>Logo
-            <input type="file" placeholder="(Image)" />
+            <input type="file" placeholder="(Image)" name="logoUrl"/>
           </label>
         </div>
       </div>
-      <input type="submit" value="Submit" class="button"/>
+      <div class="row">
+        <div class="large-12 columns">
+          <input type="submit" value="Submit" class="button"/>
+        </div>
+      </div>
     </form>
   </div>
 </div>

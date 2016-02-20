@@ -9,7 +9,7 @@ var config = {
       name: 'runontrails'
     },
     port: 3000,
-    db: 'development:27017/RunOnTrails-development'
+    db: 'development:27017/RunOnTrails'
   },
 
   test: {

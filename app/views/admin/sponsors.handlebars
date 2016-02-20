@@ -12,7 +12,14 @@
         </th>
       </thead>
       <tbody>
-        <tr> <td>Solomon</td> <td>image</td> <td><a href="google.com" _target="blank"></a></td><td><a href="#">Edit</a></td> </tr>
+        {{#each sponsors }}
+          <tr>
+            <td>{{ name }}</td>
+            <td><img src="/img/uploads/{{ logoUrl }}" alt="Logo" class="admin-sponsor-logo" /></td>
+            <td><a href="{{ url }}">{{ url }}</a></td>
+            <td><a href="/admin/sponsor/{{ id }}">Edit</a></td
+          </tr>
+        {{/each}}
       </tbody>
     </table>
 
