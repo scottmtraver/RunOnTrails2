@@ -58,11 +58,12 @@ router.get('/results', function (req, res, next) {
 });
 
 
-router.get('/race/:id', function (req, res, next) {
+router.get('/race/:id', getSponsors, function (req, res, next) {
   Race.findById(req.params.id).then(function (race) {
     res.render('race', {
       title: 'Wasatch Trail Series',
-      race: race
+      race: race,
+      raceSponsor: _.sample(req.sponsors)
     });
   });
 });

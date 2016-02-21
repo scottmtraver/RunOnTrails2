@@ -48,12 +48,7 @@ a {
   height: 290px;
 }
 
-.race-info * {
-  display: block;
-}
-
 .race-info {
-  display: inline-block;
   font-size: 1.5em;
   margin-bottom: 15px;
 }
@@ -70,6 +65,21 @@ a {
 .race-special {
   text-align: center;
   margin-top: 15px;
+}
+.sponsor h4 {
+  text-align: center;
+  margin-top: 15px;
+}
+.sponsor-image {
+  max-width: 150px;
+  display: block;
+  margin: auto;
+}
+.sponsor {
+  border-left: 1px solid grey;
+}
+.course-image {
+  border: 1px solid grey;
 }
 
 .home-main, .sponsor-main, .race-main, .admin-main {

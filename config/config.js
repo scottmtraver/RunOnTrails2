@@ -27,7 +27,7 @@ var config = {
       name: 'runontrails'
     },
     port: 3000,
-    db: 'runontrailsmongo:27017/RunOnTrails'
+    db: 'runontrailsdb:27017/RunOnTrails'
   }
 };
 

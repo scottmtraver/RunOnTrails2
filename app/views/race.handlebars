@@ -2,31 +2,52 @@
 <div class="row race-main">
   <div classs="row">
 
-    <div class="large-6 medium-8 columns race-info">
-      <h3 class="date">{{ race.date }}</h3>
-      <span>Location: <a style="display:inline;" href="{{ race.venue.directionsUrl }}">{{ race.venue.name }}</a></span>
-      <span>Registration: {{ race.registrationTime }}</span>
-      <span>Race Start: {{ race.startTime }}</span>
-      <span>Cost: {{ race.cost }}</span>
-      <span>Distance: {{ race.distances }}</span>
+    <div class="small-6 large-4 columns race-info">
+      <div class="row">
+        <div class="small-12 columns">
+          <h3 class="date">{{ race.date }}</h3>
+        </div>
+        <div class="small-12 columns">
+          <span>Location: <a style="display:inline;" href="{{ race.venue.directionsUrl }}">{{ race.venue.name }}</a></span>
+        </div>
+        <div class="small-12 columns">
+          <span>Registration: {{ race.registrationTime }}</span>
+        </div>
+        <div class="small-12 columns">
+          <span>Race Start: {{ race.startTime }}</span>
+        </div>
+        <div class="small-12 columns">
+          <span>Cost: {{ race.cost }}</span>
+        </div>
+        <div class="small-12 columns">
+          <span>Distance: {{ race.distances }}</span>
+        </div>
+      </div>
     </div>
-    <div class="large-6 medium-4 columns">
+    <div class="small-6 large-4 columns">
       <a href="{{ race.venue.url }}" target="_blank">
         <img class="venue-image" src="/uploads/{{ race.venue.logoUrl }}" alt="Venue" />
       </a>
       <h4 class="race-special">{{ race.special }}</h4>
     </div>
+    <div class="large-4 columns sponsor show-for-large">
+      <h4>Sponsor</h4>
+      <a href="{{ raceSponsor.url }}" target="_blank">
+        <img class="sponsor-image" src="/uploads/{{ raceSponsor.logoUrl }}" alt="Sponsor" />
+      </a>
+      <h4>{{ raceSponsor.name }}</h4>
+    </div>
   </div>
   <hr/>
 </div>
 <div class="row race-main">
-  <div class="large-6 columns">
+  <div class="large-5 large-offset-1 columns">
     <h4>Course:</h4>
     <p>
       {{ race.courseDescription }}
     </p>
   </div>
-  <div class="large-6 columns">
+  <div class="large-5 columns">
     <img class="course-image" src="/uploads/{{ race.courseUrl }}" alt="Course" />
   </div>
 </div>
