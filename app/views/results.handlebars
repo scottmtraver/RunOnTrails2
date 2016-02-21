@@ -5,6 +5,7 @@
     <table class="races-table" href="#Races">
       <thead>
         <tr>
+          <th class="show-for-large">Name</th>
           <th>Date</th>
           <th>Time</th>
           <th>Location</th>
@@ -12,12 +13,15 @@
         </th>
       </thead>
       <tbody>
-        <tr> <td>Wednesday 12rd</td> <td>7:56</td> <td>Snowbird</td> <td>Info</td> </tr>
-        <tr> <td>Wednesday 12rd</td> <td>7:56</td> <td>Snowbird</td> <td>Info</td> </tr>
-        <tr> <td>Wednesday 12rd</td> <td>7:56</td> <td>Snowbird</td> <td>Info</td> </tr>
-        <tr> <td>Wednesday 12rd</td> <td>7:56</td> <td>Snowbird</td> <td>Info</td> </tr>
-        <tr> <td>Wednesday 12rd</td> <td>7:56</td> <td>Snowbird</td> <td>Info</td> </tr>
-        <tr> <td>Wednesday 12rd</td> <td>7:56</td> <td>Snowbird</td> <td>Info</td> </tr>
+        {{#each races }}
+          <tr>
+            <td class="show-for-large">{{ name }}</td>
+            <td class="date-slash">{{ date }}</td>
+            <td>{{ startTime }}</td>
+            <td>{{ venue.name }}</td>
+            <td><a href="/race/{{ id }}">Info</a></td>
+          </tr>
+        {{/each}}
       </tbody>
     </table>
 
