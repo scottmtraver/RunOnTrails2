@@ -14,7 +14,11 @@
       </thead>
       <tbody>
         {{#each races }}
+        {{#if nextRace}}
+          <tr class="next-race">
+        {{else}}
           <tr>
+        {{/if}}
             <td class="show-for-large">{{ name }}</td>
             <td class="date-slash">{{ date }}</td>
             <td>{{ startTime }}</td>

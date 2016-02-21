@@ -82,6 +82,10 @@ a {
   border: 1px solid grey;
 }
 
+.next-race {
+  font-weight: bold;
+}
+
 .home-main, .sponsor-main, .race-main, .admin-main {
   background-color: white;
   padding: 15px;

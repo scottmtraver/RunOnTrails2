@@ -49,7 +49,8 @@ router.get('/series', function (req, res, next) {
 });
 
 router.get('/results', function (req, res, next) {
-  Race.find({}).then(function (races) {//get all
+  Race.find({}).sort('date').then(function (races) {//get all
+    _.find(races, function (r) { return r.date > Date.now() }).nextRace = true;
     res.render('results', {
       title: 'Wasatch Trail Series',
       races: races
