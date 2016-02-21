@@ -19,11 +19,13 @@ module.exports = function (app) {
 
 router.get('/', getSponsors, function (req, res, next) {
   Race.find({}).sort('date').then(function (races) {
+    _.find(races, function (r) { return r.date > Date.now() }).nextRace = true;
     res.render('index', {
       title: 'Wasatch Trail Series',
       races: races,
       nextRace: _.find(races, function (r) { return r.date > Date.now() }),
-      sponsors: _.sample(req.sponsors, 3)
+      sponsors: _.sample(req.sponsors, 3),
+      raceSponsor: _.sample(req.sponsors)
     });
   });
 });
@@ -48,12 +50,13 @@ router.get('/series', function (req, res, next) {
   });
 });
 
-router.get('/results', function (req, res, next) {
+router.get('/results', getSponsors, function (req, res, next) {
   Race.find({}).sort('date').then(function (races) {//get all
     _.find(races, function (r) { return r.date > Date.now() }).nextRace = true;
     res.render('results', {
       title: 'Wasatch Trail Series',
-      races: races
+      races: races,
+      sponsors: _.sample(req.sponsors, 4)
     });
   });
 });

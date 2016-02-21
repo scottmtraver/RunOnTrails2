@@ -1,5 +1,5 @@
 <div class="row sponsor-main">
-  <div class="large-12 columns">
+  <div class="small-12 columns">
     <h4>All Races</h4>
 
     <table class="races-table" href="#Races">
@@ -35,6 +35,14 @@
       </tbody>
     </table>
     <span>Looking for last years races or results? <a href="#">2015 Results</a></span>
+  </div>
+  <div class="small-12 columns">
+    <hr/>
+    {{#each sponsors}}
+    <a href="{{ url }}" target="_blank">
+      <img class="sponsor-thumbnail" src="/uploads/{{ logoUrl }}"/>
+    </a>
+    {{/each}}
   </div>
 </div>
 
