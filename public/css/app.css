@@ -92,3 +92,8 @@ a {
 .admin-venue-logo, .admin-sponsor-logo {
   width: 150px;
 }
+.sponsor-thumbnail {
+  width: 200px;
+  margin: auto;
+
+}

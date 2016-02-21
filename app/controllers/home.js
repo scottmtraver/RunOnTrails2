@@ -5,16 +5,25 @@ var express = require('express'),
   Race = mongoose.model('Race'),
   Sponsor = mongoose.model('Sponsor');
 
+
+function getSponsors (req, res, next) {
+  Sponsor.find({}).then(function (sponsors) {
+    req.sponsors = sponsors;
+    return next();
+  });
+}
+
 module.exports = function (app) {
   app.use('/', router);
 };
 
-router.get('/', function (req, res, next) {
+router.get('/', getSponsors, function (req, res, next) {
   Race.find({}).sort('date').then(function (races) {
     res.render('index', {
       title: 'Wasatch Trail Series',
       races: races,
-      nextRace: _.find(races, function (r) { return r.date > Date.now() })
+      nextRace: _.find(races, function (r) { return r.date > Date.now() }),
+      sponsors: _.sample(req.sponsors, 3)
     });
   });
 });
