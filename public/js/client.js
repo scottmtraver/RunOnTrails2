@@ -10,4 +10,8 @@ $(document).ready(function () {
     ele.innerHTML = formatted;
   });
 }); 
+$('.date').each(function (i, ele) {
+  var formatted = moment(ele.innerHTML).format('dddd MMM Do');
+  ele.innerHTML = formatted;
+});
 

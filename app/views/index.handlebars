@@ -4,19 +4,21 @@
       <div class="next-race-card item">
         <div classs="row">
           <div class="large-12 columns">
-            <h3>Next Race: Wednesday Oct 3rd</h3>
+            <h3>Next Race: <span class="date">{{ nextRace.date }}</span></h3>
           </div>
           <div class="large-6 medium-8 columns race-info">
-            <span>Location: Alta</span>
-            <span>Registration: 6:30</span>
-            <span>Race Start: 6:30</span>
-            <span>Cost: $20</span>
-            <span>Distance: 5K and 10K courses</span>
-            <span>Course: Description</span>
+            <span>Location: <a style="display:inline;" href="{{ nextRace.venue.directionsUrl }}">{{ nextRace.venue.name }}</a></span>
+            <span>Registration: {{ nextRace.registrationTime }}</span>
+            <span>Race Start: {{ nextRace.startTime }}</span>
+            <span>Cost: {{ nextRace.cost }}</span>
+            <span>Distance: {{ nextRace.distances }}</span>
+            <span>Course: <a style="display:inline;" href="/race/{{nextRace.id}}">Description</a></span>
           </div>
           <div class="large-6 medium-4 columns">
-            <img class="venue-image" src="http://fm100.com/wp-content/uploads/2015/06/snowbird-logo.jpg" alt="Venue" />
-            <h4 class="race-special">Salomon Shoe Demo Tonight!</h4>
+            <a href="{{ nextRace.venue.url }}" target="_blank">
+              <img class="venue-image" src="/uploads/{{ nextRace.venue.logoUrl }}" alt="Venue" />
+            </a>
+            <h4 class="race-special">{{ nextRace.special }}</h4>
           </div>
         </div>
       </div>
@@ -38,16 +40,18 @@
     <div class="owl-carousel hero-flipper-mobile"> 
       <div class="next-race-card hero-flipper-item-mobile">
         <div class="large-12 columns">
-            <h3>Next Race: Wednesday Oct 3rd</h3>
-          </div>
-        <div class="small-6 columns">
-            <span>Location: Alta</span>
-            <span>Registration: 6:30</span>
-            <span>Race Start: 6:30</span>
+          <h5>Next Race:<span class="date" style="display:inline;">{{ nextRace.date }}</span></h5>
         </div>
         <div class="small-6 columns">
-            <img class="venue-image-mobile" src="http://fm100.com/wp-content/uploads/2015/06/snowbird-logo.jpg" alt="Venue" />
-            <a>More Info</a>
+            <span>Location: <a style="display:inline;" href="{{ nextRace.venue.directionsUrl }}">{{ nextRace.venue.name }}</a></span>
+            <span>Registration: {{ nextRace.registrationTime }}</span>
+            <span>Race Start: {{ nextRace.startTime }}</span>
+        </div>
+        <div class="small-6 columns">
+          <a href="{{ nextRace.venue.url }}" target="_blank">
+            <img class="venue-image-mobile" src="/uploads/{{ nextRace.venue.logoUrl }}" alt="Venue" />
+          </a>
+          <a href="/race/{{ nextRace.id }}">More Info</a>
         </div>
       </div>
     </div>
@@ -66,6 +70,7 @@
     <table class="races-table" href="#Races">
       <thead>
         <tr>
+          <th class="show-for-large">Name</th>
           <th>Date</th>
           <th>Time</th>
           <th>Location</th>
@@ -73,12 +78,21 @@
         </th>
       </thead>
       <tbody>
-        <tr> <td>Wednesday 12rd</td> <td>7:56</td> <td>Snowbird</td> <td>Info</td> </tr>
-        <tr> <td>Wednesday 12rd</td> <td>7:56</td> <td>Snowbird</td> <td>Info</td> </tr>
-        <tr> <td>Wednesday 12rd</td> <td>7:56</td> <td>Snowbird</td> <td>Info</td> </tr>
-        <tr> <td>Wednesday 12rd</td> <td>7:56</td> <td>Snowbird</td> <td>Info</td> </tr>
-        <tr> <td>Wednesday 12rd</td> <td>7:56</td> <td>Snowbird</td> <td>Info</td> </tr>
-        <tr> <td>Wednesday 12rd</td> <td>7:56</td> <td>Snowbird</td> <td>Info</td> </tr>
+        {{#each races }}
+          <tr>
+            <td class="show-for-large">{{ name }}</td>
+            <td class="date-slash">{{ date }}</td>
+            <td>{{ startTime }}</td>
+            <td>{{ venue.name }}</td>
+            <td>
+              <a href="/race/{{ id }}">Info</a>
+              {{#if results }}
+              &nbsp;
+                <a href="/race/{{ id }}">Results</a>
+              {{/if}}
+            </td>
+          </tr>
+        {{/each}}
       </tbody>
     </table>
   </div>

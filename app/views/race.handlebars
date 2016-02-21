@@ -1,33 +1,37 @@
-<div class="row sponsor-main">
-  <div class="large-12 columns">
-    <div classs="row">
-      <div class="large-12 columns">
-        <h3>Next Race: Wednesday Oct 3rd</h3>
-      </div>
-      <div class="large-6 medium-8 columns race-info">
-        <span>Location: Alta</span>
-        <span>Registration: 6:30</span>
-        <span>Race Start: 6:30</span>
-        <span>Cost: $20</span>
-        <span>Distance: 5K and 10K courses</span>
-      </div>
-      <div class="large-6 medium-4 columns">
-        <img class="venue-image" src="http://fm100.com/wp-content/uploads/2015/06/snowbird-logo.jpg" alt="Venue" />
-        <h4 class="race-special">Salomon Shoe Demo Tonight!</h4>
-      </div>
+{{#if race }}
+<div class="row race-main">
+  <div classs="row">
+
+    <div class="large-6 medium-8 columns race-info">
+      <h3 class="date">{{ race.date }}</h3>
+      <span>Location: <a style="display:inline;" href="{{ race.venue.directionsUrl }}">{{ race.venue.name }}</a></span>
+      <span>Registration: {{ race.registrationTime }}</span>
+      <span>Race Start: {{ race.startTime }}</span>
+      <span>Cost: {{ race.cost }}</span>
+      <span>Distance: {{ race.distances }}</span>
     </div>
-    <hr/>
+    <div class="large-6 medium-4 columns">
+      <a href="{{ race.venue.url }}" target="_blank">
+        <img class="venue-image" src="/uploads/{{ race.venue.logoUrl }}" alt="Venue" />
+      </a>
+      <h4 class="race-special">{{ race.special }}</h4>
+    </div>
   </div>
+  <hr/>
+</div>
+<div class="row race-main">
   <div class="large-6 columns">
     <h4>Course:</h4>
     <p>
-      Course goes down and over and around and everywhere!
+      {{ race.courseDescription }}
     </p>
   </div>
   <div class="large-6 columns">
-    <img class="course-image" src="https://placeholdit.imgix.net/~text?txtsize=47&txt=500%C3%97500&w=500&h=500" alt="Course" />
+    <img class="course-image" src="/uploads/{{ race.courseUrl }}" alt="Course" />
   </div>
 </div>
+</div>
+{{/if}}
 
 
 

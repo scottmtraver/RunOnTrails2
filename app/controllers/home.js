@@ -1,3 +1,4 @@
+var _ = require('underscore');
 var express = require('express'),
   router = express.Router(),
   mongoose = require('mongoose'),
@@ -9,11 +10,11 @@ module.exports = function (app) {
 };
 
 router.get('/', function (req, res, next) {
-  Sponsor.find(function (err, sponsors) {//get top 2 or something
-    if (err) return next(err);
+  Race.find({}).sort('date').then(function (races) {
     res.render('index', {
       title: 'Wasatch Trail Series',
-      sponsors: sponsors
+      races: races,
+      nextRace: _.find(races, function (r) { return r.date > Date.now() })
     });
   });
 });
@@ -49,11 +50,10 @@ router.get('/results', function (req, res, next) {
 
 
 router.get('/race/:id', function (req, res, next) {
-  Sponsor.find(function (err, sponsors) {//get all
-    if (err) return next(err);
+  Race.findById(req.params.id).then(function (race) {
     res.render('race', {
       title: 'Wasatch Trail Series',
-      sponsors: sponsors
+      race: race
     });
   });
 });

@@ -112,7 +112,7 @@ router.post('/sponsor', isLoggedIn, function (req, res, next) {
 });
 //races
 router.get('/races', isLoggedIn, function (req, res, next) {
-  Race.find({}).then(function (races) {
+  Race.find({}).sort('date').then(function (races) {
     res.render('admin/races', {
       title: 'Wasatch Trail Series Admin: Sponsors',
       layout: 'admin',

@@ -55,9 +55,10 @@ a {
 .race-info {
   display: inline-block;
   font-size: 1.5em;
+  margin-bottom: 15px;
 }
 .venue-image {
-  max-width: 200px;
+  max-width: 150px;
   display: block;
   margin: auto;
 }

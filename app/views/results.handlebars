@@ -19,7 +19,13 @@
             <td class="date-slash">{{ date }}</td>
             <td>{{ startTime }}</td>
             <td>{{ venue.name }}</td>
-            <td><a href="/race/{{ id }}">Info</a></td>
+            <td>
+              <a href="/race/{{ id }}">Info</a>
+              {{#if results }}
+              &nbsp;
+                <a href="/race/{{ id }}">Results</a>
+              {{/if}}
+            </td>
           </tr>
         {{/each}}
       </tbody>
