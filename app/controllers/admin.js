@@ -191,6 +191,15 @@ router.post('/race', isLoggedIn, function (req, res, next) {
     });
   }
 });
+//DELETE RACE
+router.get('/deleteRace/:id', isLoggedIn, function (req, res, next) {
+  if(req.params.id && req.params.id != 0) {
+    Race.findById(req.params.id).remove().then(function () {
+      res.redirect('/admin/races');
+    });
+  }
+  res.redirect('/admin/races');
+});
 //venues
 router.get('/venues', isLoggedIn, function (req, res, next) {
   Venue.find({}).then(function (venues) {
