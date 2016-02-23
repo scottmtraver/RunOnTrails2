@@ -4,7 +4,7 @@ $(function() {
 });
 $(document).ready(function () {
   $('.date-slash').each(function (i, ele) {
-    var formatted = moment(ele.innerHTML).calendar();
+    var formatted = moment(ele.innerHTML).utc().calendar();
     ele.innerHTML = formatted;
   });
   //set venue

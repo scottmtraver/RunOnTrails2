@@ -13,12 +13,12 @@ $(document).ready(function () {
   owl.trigger('owl.play',5000);
 
   $('.date-slash').each(function (i, ele) {
-    var formatted = moment(ele.innerHTML).calendar();
+    var formatted = moment(ele.innerHTML).utc().calendar();
     ele.innerHTML = formatted;
   });
 }); 
 $('.date').each(function (i, ele) {
-  var formatted = moment(ele.innerHTML).format('dddd MMM Do');
+  var formatted = moment(ele.innerHTML).utc().format('dddd MMM Do');
   ele.innerHTML = formatted;
 });
 
