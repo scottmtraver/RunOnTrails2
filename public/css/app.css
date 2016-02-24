@@ -19,11 +19,25 @@ a {
     left: 20px;
     width: 100px;
   }
+  .top-bar-center h3 {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: #269dc9;
+  }
 }
 @media (max-width: 600px) {
   .logo {
     right: 10px;
     width: 50px;
+  }
+  .mobile-title {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: #269dc9;
   }
 }
 
@@ -123,7 +137,9 @@ a {
   width: 150px;
 }
 .sponsor-thumbnail {
-  width: 200px;
+  width: 150px;
   margin: auto;
-
+}
+.bottom-sponsor {
+  margin: 20px;
 }
