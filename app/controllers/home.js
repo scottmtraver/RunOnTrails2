@@ -56,7 +56,7 @@ router.get('/results', getSponsors, function (req, res, next) {
     res.render('results', {
       title: 'Wasatch Trail Series',
       races: races,
-      sponsors: _.sample(req.sponsors, 4)
+      sponsors: _.sample(req.sponsors, 6)
     });
   });
 });

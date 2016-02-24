@@ -48,7 +48,11 @@
     </p>
   </div>
   <div class="large-5 columns">
-    <img class="course-image" src="/uploads/{{ race.courseUrl }}" alt="Course" />
+    {{#if race.courseUrl }}
+      <img class="course-image" src="/uploads/{{ race.courseUrl }}" alt="Course" />
+    {{else}}
+      <img class="course-image" src="/img/course-default.jpg" alt="Course" />
+    {{/if}}
   </div>
 </div>
 </div>
