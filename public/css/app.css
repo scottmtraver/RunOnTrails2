@@ -25,13 +25,10 @@ a {
     text-align: center;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     color: #269dc9;
+    z-index: -1;
   }
 }
 @media (max-width: 600px) {
-  .logo {
-    right: 10px;
-    width: 50px;
-  }
   .mobile-title {
     width: 100%;
     position: absolute;
