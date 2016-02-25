@@ -43,100 +43,109 @@
         </div>
       </div>
       <div class="item">
-        <div class="card">
-          <img class="homepage-image" src="/img/wasatchLake.jpg" alt="Running!" />
+        <div class="card row">
+          <img class="card-background" src="/img/wasatchLake.jpg" alt="Running!" />
+          <div class="large-8 columns">
+            <h1>Things to say here!</h1>
+            <h3>More text</h3>
+            <h3>More text</h3>
+            <h3>More text</h3>
+            <h3>More text</h3>
+          </div>
+          <div class="large-4 columns">
+            <img class="card-image" src="/uploads/{{ nextRace.venue.logoUrl }}" alt="Venue" />
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="card">
-          <img class="homepage-image" src="/img/wasatchValley.jpg" alt="Running!" />
+        </div>
+        <div class="item">
+          <div class="card">
+            <img class="card-background" src="/img/wasatchValley.jpg" alt="Running!" />
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="row show-for-small-only">
+    <div class="large-11 large-centered columns">
+      <div class="owl-carousel hero-flipper-mobile"> 
+        <div class="next-race-card hero-flipper-item-mobile">
+          <div class="large-12 columns">
+            <h5>Next Race:<span class="date" style="display:inline;">{{ nextRace.date }}</span></h5>
+          </div>
+          <div class="small-6 columns">
+            <span>Location: <a style="display:inline;" href="{{ nextRace.venue.directionsUrl }}">{{ nextRace.venue.name }}</a></span>
+            <span>Registration: {{ nextRace.registrationTime }}</span>
+            <span>Race Start: {{ nextRace.startTime }}</span>
+          </div>
+          <div class="small-6 columns">
+            <a href="{{ nextRace.venue.url }}" target="_blank">
+              <img class="venue-image-mobile" src="/uploads/{{ nextRace.venue.logoUrl }}" alt="Venue" />
+            </a>
+            <a href="/race/{{ nextRace.id }}">More Info</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="row show-for-small-only">
-  <div class="large-11 large-centered columns">
-    <div class="owl-carousel hero-flipper-mobile"> 
-      <div class="next-race-card hero-flipper-item-mobile">
-        <div class="large-12 columns">
-          <h5>Next Race:<span class="date" style="display:inline;">{{ nextRace.date }}</span></h5>
-        </div>
-        <div class="small-6 columns">
-          <span>Location: <a style="display:inline;" href="{{ nextRace.venue.directionsUrl }}">{{ nextRace.venue.name }}</a></span>
-          <span>Registration: {{ nextRace.registrationTime }}</span>
-          <span>Race Start: {{ nextRace.startTime }}</span>
-        </div>
-        <div class="small-6 columns">
-          <a href="{{ nextRace.venue.url }}" target="_blank">
-            <img class="venue-image-mobile" src="/uploads/{{ nextRace.venue.logoUrl }}" alt="Venue" />
-          </a>
-          <a href="/race/{{ nextRace.id }}">More Info</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="row">
-  <div class="large-12 columns home-main">
-    <div class="large-8 columns" id="anchor-stop">
-      <div class="row">
-      <h3>Welcome to the Wasatch Trail Series!</h3>
-        <div class="small-8 columns">
-          <p>
-            But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
-          </p>
+  <div class="row">
+    <div class="large-12 columns home-main">
+      <div class="large-8 columns" id="anchor-stop">
+        <div class="row">
+          <h3>Welcome to the Wasatch Trail Series!</h3>
+          <div class="small-8 columns">
+            <p>
+              But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
+            </p>
 
+          </div>
+          <div class="small-4 columns">
+            <img src="/img/logoWhite.png" alt="logo" />
+          </div>
         </div>
-        <div class="small-4 columns">
-          <img src="/img/logoWhite.png" alt="logo" />
-        </div>
-      </div>
-      <hr />
-      <a name="Races"></a>
-      <table class="races-table" href="#Races">
-        <thead>
-          <tr>
-            <th class="show-for-large">Name</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Location</th>
-            <th></th>
-          </th>
-        </thead>
-        <tbody>
-          {{#each races }}
-          {{#if nextRace}}
-            <tr class="next-race">
-          {{else}}
+        <hr />
+        <a name="Races"></a>
+        <table class="races-table" href="#Races">
+          <thead>
             <tr>
-          {{/if}}
-            <td class="show-for-large">{{ name }}</td>
-            <td class="date-slash">{{ date }}</td>
-            <td>{{ startTime }}</td>
-            <td>{{ venue.name }}</td>
-            <td>
-              <a href="/race/{{ id }}">Info</a>
-              {{#if results }}
-              &nbsp;
-              <a href="/race/{{ id }}">Results</a>
-              {{/if}}
-            </td>
-          </tr>
+              <th class="show-for-large">Name</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Location</th>
+              <th></th>
+            </th>
+          </thead>
+          <tbody>
+            {{#each races }}
+            {{#if nextRace}}
+            <tr class="next-race">
+              {{else}}
+              <tr>
+                {{/if}}
+                <td class="show-for-large">{{ name }}</td>
+                <td class="date-slash">{{ date }}</td>
+                <td>{{ startTime }}</td>
+                <td>{{ venue.name }}</td>
+                <td>
+                  <a href="/race/{{ id }}">Info</a>
+                  {{#if results }}
+                  &nbsp;
+                  <a href="/race/{{ id }}">Results</a>
+                  {{/if}}
+                </td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        <div class="columns large-3 right">
+          <hr/>
+          {{#each sponsors}}
+          <a href="{{ url }}" target="_blank" class="side-sponsor">
+            <img class="sponsor-thumbnail" src="/uploads/{{ logoUrl }}"/>
+          </a>
           {{/each}}
-        </tbody>
-      </table>
+        </div>
+      </div>
     </div>
-    <div class="columns large-3 right">
-      <hr/>
-      {{#each sponsors}}
-      <a href="{{ url }}" target="_blank" class="side-sponsor">
-        <img class="sponsor-thumbnail" src="/uploads/{{ logoUrl }}"/>
-      </a>
-      {{/each}}
-    </div>
-  </div>
-</div>
 
-</div>
+  </div>
