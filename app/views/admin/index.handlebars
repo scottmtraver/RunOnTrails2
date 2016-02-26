@@ -1,9 +1,30 @@
 <div class="row admin-main">
   <div class="large-12 columns">
-    <h4>Admin</h4>
-    <p>
-      Run On Trails Admin
-    </p>
+    <h4>Edit Homepage Information</h4>
+    <form id="homepageForm" method="post" action="/admin/homepage" enctype="multipart/form-data" >
+      <div class="row">
+        <div class="large-6 columns">
+          <label>Homepage Card 1
+            <input type="text" placeholder="(Header)" name="card1Header" value="{{ homepage.card1Header }}" />
+            <textarea form="homepageForm" value="{{ homepage.card1Text }}" name="card1Text">{{ homepage.card1Text }}</textarea>
+          </label>
+        </div>
+        <div class="large-6 columns">
+          <label>Homepage Card 2
+            <input type="text" placeholder="(Header)" name="card2Header" value="{{ homepage.card2Header }}" />
+            <textarea form="homepageForm" value="{{ homepage.card2Text }}" name="card2Text">{{ homepage.card2Text }}</textarea>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <label>Homepage Text
+            <textarea style="height: 200px;" form="homepageForm" value="{{ homepage.mainText }}" name="mainText">{{ homepage.mainText }}</textarea>
+          </label>
+        </div>
+      </div>
+      <input type="submit" value="Save" class="button"/>
+      <a href="/admin" class="button">Reset Changes</a>
+    </form>
   </div>
 </div>
-

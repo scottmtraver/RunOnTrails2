@@ -5,6 +5,7 @@ var express = require('express'),
   Venue = mongoose.model('Venue'),
   Account = mongoose.model('Account'),
   Race = mongoose.model('Race'),
+  Homepage = mongoose.model('Homepage'),
   Sponsor = mongoose.model('Sponsor');
 
 function isLoggedIn(req, res, next) {
@@ -51,9 +52,18 @@ router.get('/logout', function(req, res) {
 
 
 router.get('/', isLoggedIn, function (req, res, next) {
-  res.render('admin/index', {
-    title: 'Wasatch Trail Series Admin',
-    layout: 'admin'
+  Homepage.find({}).then(function (homepage) {
+    var display;
+    if(homepage.length == 0) {
+      display = new Homepage();
+    } else {
+      display = homepage[0];
+    }
+    res.render('admin/index', {
+      title: 'Wasatch Trail Series Admin',
+      layout: 'admin',
+      homepage: display
+    });
   });
 });
 //sponsors
@@ -258,4 +268,27 @@ router.post('/venue', isLoggedIn, function (req, res, next) {
   }
 });
 
-
+//Homepage
+router.post('/homepage', isLoggedIn, function (req, res, next) {
+  var filename;
+  if(req.file) {
+    filename = req.file.filename;
+  }
+  Homepage.find({}).then(function (homepage) {
+    var edit;
+    if(homepage.length == 0) {
+      edit = new Homepage();
+    } else {
+      edit = homepage[0];
+    }
+    edit.card1Header = req.body.card1Header;
+    edit.card1Text = req.body.card1Text;
+    edit.card2Header = req.body.card2Header;
+    edit.card2Text = req.body.card2Text;
+    edit.mainText = req.body.mainText;
+    edit.seriesText = req.body.seriesText;
+    edit.save().then(function () {
+      res.redirect('/admin');
+    });
+  });
+});
