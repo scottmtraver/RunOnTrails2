@@ -10,7 +10,7 @@ $(document).ready(function () {
     autoplayTimeout:5000,
     autoplayHoverPause:true
   });
-  //owl.trigger('owl.play',5000);
+  owl.trigger('owl.play',5000);
 
   $('.date-slash').each(function (i, ele) {
     var formatted = moment(ele.innerHTML).utc().calendar();

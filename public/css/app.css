@@ -93,7 +93,8 @@ a {
 }
 .card-image {
   width: 80%;
-  margin-top: 10px;
+  position: relative;
+  top: 50px;
 }
 .race-info {
   font-size: 1.5em;
