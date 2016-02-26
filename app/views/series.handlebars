@@ -1,8 +1,17 @@
 <div class="row sponsor-main">
-  <div class="large-12 columns">
+  <div class="large-8 columns">
     <h4>Series Scoring</h4>
     <p>
-      Series is scored by these criteris
+      {{ seriesInfo }}
     </p>
   </div>
+  <div class="columns large-3 right">
+    <hr/>
+    {{#each sponsors}}
+    <a href="{{ url }}" target="_blank" class="side-sponsor">
+      <img class="sponsor-thumbnail" src="/uploads/{{ logoUrl }}"/>
+    </a>
+    {{/each}}
+  </div>
+
 </div>

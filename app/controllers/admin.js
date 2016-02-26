@@ -271,7 +271,7 @@ router.post('/venue', isLoggedIn, function (req, res, next) {
 //Homepage
 router.post('/homepage', isLoggedIn, function (req, res, next) {
   var card1Image, card2Image;
-  if(req.files) {//has first image
+  if(req.files.length == 2) {//has first image
     card1Image = req.files[0].filename;
     card2Image = req.files[1].filename;
   }

@@ -46,12 +46,13 @@ router.get('/sponsors', function (req, res, next) {
   });
 });
 
-router.get('/series', function (req, res, next) {
-  Sponsor.find(function (err, sponsors) {//get all
-    if (err) return next(err);
+router.get('/series', getSponsors, function (req, res, next) {
+  Homepage.find({}).then(function (info) {
+    var seriesInfo = info[0].seriesText;
     res.render('series', {
       title: 'Wasatch Trail Series',
-      sponsors: sponsors
+      sponsors: _.sample(req.sponsors, 3),
+      seriesInfo: seriesInfo
     });
   });
 });
