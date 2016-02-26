@@ -95,8 +95,8 @@ router.get('/sponsor/:id', isLoggedIn, function (req, res, next) {
 });
 router.post('/sponsor', isLoggedIn, function (req, res, next) {
   var filename;
-  if(req.file) {
-    filename = req.file.filename;
+  if(req.files) {
+    filename = req.files[0].filename;
   }
   if(!req.body.id || req.body.id == 0) {
     var sponsor = new Sponsor({
@@ -155,8 +155,8 @@ router.get('/race/:id', isLoggedIn, function (req, res, next) {
 });
 router.post('/race', isLoggedIn, function (req, res, next) {
   var filename;
-  if(req.file) {
-    filename = req.file.filename;
+  if(req.files) {
+    filename = req.files[0].filename;
   }
   if(!req.body.id || req.body.id == 0) {
     Venue.findById(req.body.venueID).then(function (venue) {
@@ -240,8 +240,8 @@ router.get('/venue/:id', isLoggedIn, function (req, res, next) {
 
 router.post('/venue', isLoggedIn, function (req, res, next) {
   var filename;
-  if(req.file) {
-    filename = req.file.filename;
+  if(req.files) {
+    filename = req.files[0].filename;
   }
   if(!req.body.id || req.body.id == 0) {
     var venue = new Venue({
@@ -270,9 +270,10 @@ router.post('/venue', isLoggedIn, function (req, res, next) {
 
 //Homepage
 router.post('/homepage', isLoggedIn, function (req, res, next) {
-  var filename;
-  if(req.file) {
-    filename = req.file.filename;
+  var card1Image, card2Image;
+  if(req.files) {//has first image
+    card1Image = req.files[0].filename;
+    card2Image = req.files[1].filename;
   }
   Homepage.find({}).then(function (homepage) {
     var edit;
@@ -283,8 +284,14 @@ router.post('/homepage', isLoggedIn, function (req, res, next) {
     }
     edit.card1Header = req.body.card1Header;
     edit.card1Text = req.body.card1Text;
+    if(req.files) {
+      edit.card1Image = card1Image;
+    }
     edit.card2Header = req.body.card2Header;
     edit.card2Text = req.body.card2Text;
+    if(req.files) {
+      edit.card2Image = card2Image;
+    }
     edit.mainText = req.body.mainText;
     edit.seriesText = req.body.seriesText;
     edit.save().then(function () {

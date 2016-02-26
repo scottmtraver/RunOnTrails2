@@ -3,6 +3,7 @@ var express = require('express'),
   router = express.Router(),
   mongoose = require('mongoose'),
   Race = mongoose.model('Race'),
+  Homepage = mongoose.model('Homepage'),
   Sponsor = mongoose.model('Sponsor');
 
 
@@ -18,14 +19,19 @@ module.exports = function (app) {
 };
 
 router.get('/', getSponsors, function (req, res, next) {
-  Race.find({}).sort('date').then(function (races) {
+  var racesP = Race.find({}).sort('date');
+  var homepageP = Homepage.find({});
+  Promise.all([racesP, homepageP]).then(function (values) {
+    var races = values[0];
+    var home = values[1][0];//first
     _.find(races, function (r) { return r.date > Date.now() }).nextRace = true;
     res.render('index', {
       title: 'Wasatch Trail Series',
       races: races,
       nextRace: _.find(races, function (r) { return r.date > Date.now() }),
       sponsors: _.sample(req.sponsors, 3),
-      raceSponsor: _.sample(req.sponsors)
+      raceSponsor: _.sample(req.sponsors),
+      homepage: home
     });
   });
 });

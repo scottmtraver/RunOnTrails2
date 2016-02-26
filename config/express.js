@@ -53,7 +53,7 @@ module.exports = function(app, config) {
   });
   var upload = multer({ storage: storage });
 
-  app.use(upload.single('fileupload'));
+  app.use(upload.array('fileupload'));
 
   //passport local config
   var passport = require('passport');

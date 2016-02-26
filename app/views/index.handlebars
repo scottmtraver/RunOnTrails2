@@ -46,19 +46,27 @@
         <div class="card row">
           <img class="card-background" src="/img/wasatchLake.jpg" alt="Running!" />
           <div class="large-8 columns">
-            <h1>Things to say here!</h1>
-            <h3>this is the wording for things here we go I want to see how this wraps</h3>
+            <h1>{{ homepage.card1Header }}</h1>
+            <h3>{{ homepage.card1Text }}</h3>
           </div>
           <div class="large-4 columns">
-            <img class="card-image" src="/uploads/{{ nextRace.venue.logoUrl }}" alt="Venue" />
+            <img class="card-image" src="/uploads/{{ homepage.card1Image }}" alt="Trails" />
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="card">
+          <img class="card-background" src="/img/wasatchValley.jpg" alt="Running!" />
+          <div class="large-8 columns">
+            <h1>{{ homepage.card2Header }}</h1>
+            <h3>{{ homepage.card2Text }}</h3>
+          </div>
+          <div class="large-4 columns">
+            <img class="card-image" src="/uploads/{{ homepage.card2Image }}" alt="Trails" />
           </div>
         </div>
         </div>
-        <div class="item">
-          <div class="card">
-            <img class="card-background" src="/img/wasatchValley.jpg" alt="Running!" />
-          </div>
-        </div>
+      </div>
     </div>
   </div>
   <div class="row show-for-small-only">
@@ -91,7 +99,7 @@
           <h3>Welcome to the Wasatch Trail Series!</h3>
           <div class="small-8 columns">
             <p>
-              But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
+              {{ homepage.mainText }}
             </p>
 
           </div>
