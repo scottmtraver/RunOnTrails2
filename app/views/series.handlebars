@@ -1,11 +1,9 @@
 <div class="row sponsor-main">
   <div class="large-8 columns">
-    <h4>Series Scoring</h4>
-    <p>
-      {{ seriesInfo }}
-    </p>
+    {{{ seriesInfo }}}
   </div>
-  <div class="columns large-3 right">
+  <div class="large-3 columns right-sponsors">
+    <h3>Sponsors</h3>
     <hr/>
     {{#each sponsors}}
     <a href="{{ url }}" target="_blank" class="side-sponsor">
@@ -13,5 +11,4 @@
     </a>
     {{/each}}
   </div>
-
 </div>

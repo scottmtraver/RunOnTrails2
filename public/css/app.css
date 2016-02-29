@@ -166,7 +166,7 @@ a {
   background-color: white;
   padding: 15px;
 }
-.home-sponsors {
+.right-sponsors {
   text-align: center;
 }
 
@@ -194,6 +194,6 @@ a {
 .side-sponsor img {
   margin-bottom: 30px;
 }
-.jqte_tool.jqte_tool_1.jqte_tool_label {
+.jqte_tool_label.unselectable {
   display: initial !important;
 }
