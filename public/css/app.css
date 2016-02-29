@@ -197,3 +197,7 @@ a {
 .jqte_tool_label.unselectable {
   display: initial !important;
 }
+.admin-message {
+  text-align: center;
+
+}

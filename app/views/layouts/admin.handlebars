@@ -23,7 +23,7 @@
     </div>
 
     <div class="top-bar" id="example-menu">
-       <div class="top-bar-left">
+      <div class="top-bar-left">
         <ul class="menu">
           <a class="menu-text" href="/">
             <img src="/img/logoWhite.png" alt="logo" class="logo" />
@@ -38,8 +38,16 @@
         </ul>
       </div>
     </div>
+    {{#if message }}
+    <div class="warning callout admin-message" data-closable>
+      <h5>{{ message }}</h5>
+      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>    
+    {{/if}}
     <div class="hero-image">
-    
+
     </div>
     <div class="main">
 

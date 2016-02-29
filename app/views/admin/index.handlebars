@@ -8,6 +8,9 @@
             <input type="text" placeholder="(Header)" name="card1Header" value="{{ homepage.card1Header }}" />
             <textarea form="homepageForm" value="{{ homepage.card1Text }}" name="card1Text">{{ homepage.card1Text }}</textarea>
             <input type="file" placeholder="(Course Image)" name="fileupload" />
+            {{#if homepage.card1Image }}
+              <img class="logo-tiny" src="/uploads/{{ homepage.card1Image }}" alt="Logo" />
+            {{/if}}
           </label>
         </div>
         <div class="large-6 columns">
@@ -15,6 +18,9 @@
             <input type="text" placeholder="(Header)" name="card2Header" value="{{ homepage.card2Header }}" />
             <textarea form="homepageForm" value="{{ homepage.card2Text }}" name="card2Text">{{ homepage.card2Text }}</textarea>
             <input type="file" placeholder="(Course Image)" name="fileupload" />
+            {{#if homepage.card2Image }}
+              <img class="logo-tiny" src="/uploads/{{ homepage.card2Image }}" alt="Logo" />
+            {{/if}}
           </label>
         </div>
       </div>

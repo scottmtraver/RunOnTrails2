@@ -36,7 +36,7 @@ router.get('/initialize', function(req, res, next) {
   });
 });
 router.get('/login', function(req, res) {
-  res.render('admin/login', { user : req.user, layout: 'admin', error: req.flash('error') });
+  res.render('admin/login', { user : req.user, layout: 'admin', message: req.flash('error') });
 });
 
 router.post('/login', passport.authenticate('local', {
@@ -62,7 +62,8 @@ router.get('/', isLoggedIn, function (req, res, next) {
     res.render('admin/index', {
       title: 'Wasatch Trail Series Admin',
       layout: 'admin',
-      homepage: display
+      homepage: display,
+      message: req.flash('message')
     });
   });
 });
@@ -105,6 +106,7 @@ router.post('/sponsor', isLoggedIn, function (req, res, next) {
       logoUrl: filename
     });
     sponsor.save().then(function () {
+      req.flash('message', 'Sponsor Saved!');
       res.redirect('/admin/sponsors');
     });
   } else {
@@ -115,6 +117,7 @@ router.post('/sponsor', isLoggedIn, function (req, res, next) {
         sponsor.logoUrl = filename;
       }
       sponsor.save().then(function () {
+        req.flash('message', 'Sponsor Saved!');
         res.redirect('/admin/sponsors');
       });
     });
@@ -174,6 +177,7 @@ router.post('/race', isLoggedIn, function (req, res, next) {
         venue: venue
       });
       race.save().then(function () {
+        req.flash('message', 'Race Saved!');
         res.redirect('/admin/races');
       });
     });
@@ -195,6 +199,7 @@ router.post('/race', isLoggedIn, function (req, res, next) {
         race.venue = venue;
 
         race.save().then(function () {
+          req.flash('message', 'Race Saved!');
           res.redirect('/admin/races');
         });
       });
@@ -208,6 +213,7 @@ router.get('/deleteRace/:id', isLoggedIn, function (req, res, next) {
       res.redirect('/admin/races');
     });
   }
+  req.flash('message', 'Race Deleted!');
   res.redirect('/admin/races');
 });
 //venues
@@ -251,6 +257,7 @@ router.post('/venue', isLoggedIn, function (req, res, next) {
       logoUrl: filename
     });
     venue.save().then(function () {
+      req.flash('message', 'Venue Saved!');
       res.redirect('/admin/venues');
     });
   } else {
@@ -262,6 +269,7 @@ router.post('/venue', isLoggedIn, function (req, res, next) {
         venue.logoUrl = filename;
       }
       venue.save().then(function () {
+        req.flash('message', 'Venue Saved!');
         res.redirect('/admin/venues');
       });
     });
@@ -296,6 +304,7 @@ router.post('/homepage', isLoggedIn, function (req, res, next) {
     edit.homepageVideo = req.body.homepageVideo;
     edit.seriesText = req.body.seriesText;
     edit.save().then(function () {
+      req.flash('message', 'Saved!');
       res.redirect('/admin');
     });
   });
