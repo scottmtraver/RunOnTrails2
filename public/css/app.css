@@ -60,6 +60,18 @@ a {
   .hero-image {
     height: 500px
   }
+  .readmore-mobile {
+    height: 300px;
+    overflow: hidden;
+  }
+  .readmore-mobile.open {
+    height: 100%;
+  }
+  .readmore-opener {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
 }
 
 .hero-image {
@@ -160,6 +172,9 @@ a {
 
 .next-race {
   font-weight: bold;
+}
+.home-races h2 {
+  text-align: center;
 }
 
 .home-main, .sponsor-main, .race-main, .admin-main {

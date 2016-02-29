@@ -21,4 +21,7 @@ $('.date').each(function (i, ele) {
   var formatted = moment(ele.innerHTML).utc().format('dddd MMMM Do');
   ele.innerHTML = formatted;
 });
-
+$('.readmore-opener').click(function () {
+  $('.readmore-mobile').addClass('open');
+  $(this).hide();
+});
