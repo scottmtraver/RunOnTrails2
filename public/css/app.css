@@ -163,3 +163,6 @@ a {
 .side-sponsor img {
   margin-bottom: 30px;
 }
+.jqte_tool.jqte_tool_1.jqte_tool_label {
+  display: initial !important;
+}

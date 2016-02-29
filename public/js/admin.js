@@ -10,5 +10,6 @@ $(document).ready(function () {
   //set venue
   var vid = $('#venueID').val();
   $('.venue-selector').val(vid);
+  $('.jquery-te').jqte();
 }); 
 
