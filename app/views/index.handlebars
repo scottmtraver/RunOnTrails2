@@ -65,88 +65,99 @@
             <img class="card-image" src="/uploads/{{ homepage.card2Image }}" alt="Trails" />
           </div>
         </div>
-        </div>
       </div>
     </div>
   </div>
-  <div class="row show-for-small-only">
-    <div class="large-11 large-centered columns">
-      <div class="owl-carousel hero-flipper-mobile"> 
-        <div class="next-race-card hero-flipper-item-mobile">
-          <div class="large-12 columns">
-            <h5>Next Race:<span class="date" style="display:inline;">{{ nextRace.date }}</span></h5>
-          </div>
-          <div class="small-6 columns">
-            <span>Location: <a style="display:inline;" href="{{ nextRace.venue.directionsUrl }}">{{ nextRace.venue.name }}</a></span>
-            <span>Registration: {{ nextRace.registrationTime }}</span>
-            <span>Race Start: {{ nextRace.startTime }}</span>
-          </div>
-          <div class="small-6 columns">
-            <a href="{{ nextRace.venue.url }}" target="_blank">
-              <img class="venue-image-mobile" src="/uploads/{{ nextRace.venue.logoUrl }}" alt="Venue" />
-            </a>
-            <a href="/race/{{ nextRace.id }}">More Info</a>
-          </div>
+</div>
+<div class="row show-for-small-only">
+  <div class="large-11 large-centered columns">
+    <div class="owl-carousel hero-flipper-mobile"> 
+      <div class="next-race-card hero-flipper-item-mobile">
+        <div class="large-12 columns">
+          <h5>Next Race:<span class="date" style="display:inline;">{{ nextRace.date }}</span></h5>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-12 columns home-main">
-      <div class="large-8 columns">
-        <div class="row">
-          <div class="small-8 columns">
-              {{{ homepage.mainText }}}
-          </div>
-          <div class="small-4 columns">
-            <img src="/img/logoWhite.png" alt="logo" />
-          </div>
+        <div class="small-6 columns">
+          <span>Location: <a style="display:inline;" href="{{ nextRace.venue.directionsUrl }}">{{ nextRace.venue.name }}</a></span>
+          <span>Registration: {{ nextRace.registrationTime }}</span>
+          <span>Race Start: {{ nextRace.startTime }}</span>
         </div>
-        <hr />
-        <a name="Races"></a>
-        <table class="races-table" href="#Races">
-          <thead>
-            <tr>
-              <th class="show-for-large">Name</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Location</th>
-              <th></th>
-            </th>
-          </thead>
-          <tbody>
-            {{#each races }}
-            {{#if nextRace}}
-            <tr class="next-race">
-              {{else}}
-              <tr>
-                {{/if}}
-                <td class="show-for-large">{{ name }}</td>
-                <td class="date-slash">{{ date }}</td>
-                <td>{{ startTime }}</td>
-                <td>{{ venue.name }}</td>
-                <td>
-                  <a href="/race/{{ id }}">Info</a>
-                  {{#if results }}
-                  &nbsp;
-                  <a href="/race/{{ id }}">Results</a>
-                  {{/if}}
-                </td>
-              </tr>
-              {{/each}}
-            </tbody>
-          </table>
-        </div>
-        <div class="columns large-3 right">
-          <hr/>
-          {{#each sponsors}}
-          <a href="{{ url }}" target="_blank" class="side-sponsor">
-            <img class="sponsor-thumbnail" src="/uploads/{{ logoUrl }}"/>
+        <div class="small-6 columns">
+          <a href="{{ nextRace.venue.url }}" target="_blank">
+            <img class="venue-image-mobile" src="/uploads/{{ nextRace.venue.logoUrl }}" alt="Venue" />
           </a>
-          {{/each}}
+          <a href="/race/{{ nextRace.id }}">More Info</a>
         </div>
       </div>
     </div>
-
   </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns home-main">
+    <div class="large-12 columns">
+      <div class="row">
+        <div class="small-5 columns">
+          {{{ homepage.mainText }}}
+        </div>
+        <div class="small-3 columns">
+          <img src="/img/logoWhite.png" alt="logo" />
+        </div>
+        <div class="small-4 columns">
+          <div class="flex-video">
+            <iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-9 columns">
+      <a name="Races"></a>
+      <h2>Races</h2>
+      <hr/>
+      <table class="races-table" href="#Races">
+        <thead>
+          <tr>
+            <th class="show-for-large">Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Location</th>
+            <th></th>
+          </th>
+        </thead>
+        <tbody>
+          {{#each races }}
+          {{#if nextRace}}
+          <tr class="next-race">
+            {{else}}
+            <tr>
+              {{/if}}
+              <td class="show-for-large">{{ name }}</td>
+              <td class="date-slash">{{ date }}</td>
+              <td>{{ startTime }}</td>
+              <td>{{ venue.name }}</td>
+              <td>
+                <a href="/race/{{ id }}">Info</a>
+                {{#if results }}
+                &nbsp;
+                <a href="/race/{{ id }}">Results</a>
+                {{/if}}
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div class="large-3 columns home-sponsors">
+        <h2>Sponsors</h2>
+        <hr/>
+        {{#each sponsors}}
+        <a href="{{ url }}" target="_blank" class="side-sponsor">
+          <img class="sponsor-thumbnail" src="/uploads/{{ logoUrl }}"/>
+        </a>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+</div>

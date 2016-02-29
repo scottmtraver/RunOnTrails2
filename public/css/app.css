@@ -19,13 +19,16 @@ a {
     left: 20px;
     width: 100px;
   }
-  .top-bar-center h3 {
-    width: 100%;
+  .logo-link {
     position: absolute;
-    text-align: center;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-    color: #269dc9;
-    pointer-events: none;
+    left: 130px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #2199e8;
+    top: 12px;
+  }
+  .hero-image {
+    height: 600px;
   }
 }
 @media (max-width: 600px) {
@@ -34,12 +37,28 @@ a {
     right: 10px;
     height: 45px;
   }
+  .mobile-logo-link {
+    position: absolute;
+    right: 60px;
+    top: 10px;
+    color: white;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    font-size: 14px;
+  }
   .mobile-title {
     width: 100%;
     position: absolute;
     text-align: center;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
-    color: #269dc9;
+    color: white;
+  }
+  .mobile-title h2 {
+    font-weight: 700;
+    margin-top: 50px;
+  }
+  .hero-image {
+    height: 500px
   }
 }
 
@@ -47,7 +66,16 @@ a {
   background-image: url("../img/wasatchRunning.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 500px;
+}
+.hero-image h1 {
+    text-align: center;
+    margin-top: 50px;
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    color: white;
+    font-weight: 700;
+    font-size: 64px;
 }
 
 .hero-flipper {
@@ -137,6 +165,9 @@ a {
 .home-main, .sponsor-main, .race-main, .admin-main {
   background-color: white;
   padding: 15px;
+}
+.home-sponsors {
+  text-align: center;
 }
 
 .owl-buttons {
