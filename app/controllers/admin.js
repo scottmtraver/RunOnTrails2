@@ -95,7 +95,7 @@ router.get('/sponsor/:id', isLoggedIn, function (req, res, next) {
 });
 router.post('/sponsor', isLoggedIn, function (req, res, next) {
   var filename;
-  if(req.files) {
+  if(req.files.length) {
     filename = req.files[0].filename;
   }
   if(!req.body.id || req.body.id == 0) {
@@ -155,7 +155,7 @@ router.get('/race/:id', isLoggedIn, function (req, res, next) {
 });
 router.post('/race', isLoggedIn, function (req, res, next) {
   var filename;
-  if(req.files) {
+  if(req.files.length) {
     filename = req.files[0].filename;
   }
   if(!req.body.id || req.body.id == 0) {
@@ -240,7 +240,7 @@ router.get('/venue/:id', isLoggedIn, function (req, res, next) {
 
 router.post('/venue', isLoggedIn, function (req, res, next) {
   var filename;
-  if(req.files) {
+  if(req.files.length) {
     filename = req.files[0].filename;
   }
   if(!req.body.id || req.body.id == 0) {
@@ -284,12 +284,12 @@ router.post('/homepage', isLoggedIn, function (req, res, next) {
     }
     edit.card1Header = req.body.card1Header;
     edit.card1Text = req.body.card1Text;
-    if(req.files) {
+    if(req.files.length) {
       edit.card1Image = card1Image;
     }
     edit.card2Header = req.body.card2Header;
     edit.card2Text = req.body.card2Text;
-    if(req.files) {
+    if(req.files.length) {
       edit.card2Image = card2Image;
     }
     edit.mainText = req.body.mainText;
