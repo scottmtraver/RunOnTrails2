@@ -18,7 +18,7 @@ $(document).ready(function () {
   });
 }); 
 $('.date').each(function (i, ele) {
-  var formatted = moment(ele.innerHTML).utc().format('dddd MMM Do');
+  var formatted = moment(ele.innerHTML).utc().format('dddd MMMM Do');
   ele.innerHTML = formatted;
 });
 
