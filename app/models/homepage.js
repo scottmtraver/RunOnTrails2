@@ -9,6 +9,7 @@ var HomepageSchema = new Schema({
   card2Text: String,
   card2Image: String,
   mainText: String,
+  homepageVideo: String,
   seriesText: String
 });
 

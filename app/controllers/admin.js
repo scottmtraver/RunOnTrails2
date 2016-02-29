@@ -293,6 +293,7 @@ router.post('/homepage', isLoggedIn, function (req, res, next) {
       edit.card2Image = card2Image;
     }
     edit.mainText = req.body.mainText;
+    edit.homepageVideo = req.body.homepageVideo;
     edit.seriesText = req.body.seriesText;
     edit.save().then(function () {
       res.redirect('/admin');
