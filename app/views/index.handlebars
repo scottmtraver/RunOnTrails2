@@ -1,12 +1,12 @@
 <div class="row show-for-medium">
-  <div class="large-11 large-centered columns">
+  <div class="medium-11 medium-centered columns">
     <div class="owl-carousel hero-flipper"> 
       <div class="next-race-card item">
         <div classs="row">
-          <div class="large-12 columns">
+          <div class="medium-12 columns">
             <h3>Next Race: <span class="date">{{ nextRace.date }}</span></h3>
           </div>
-          <div class="small-6 large-4 columns race-info">
+          <div class="small-6 medium-4 columns race-info">
             <div class="row">
               <div class="small-12 columns">
                 <span>Location: <a style="display:inline;" href="{{ nextRace.venue.directionsUrl }}">{{ nextRace.venue.name }}</a></span>
@@ -28,13 +28,13 @@
               </div>
             </div>
           </div>
-          <div class="small-6 large-4 columns">
+          <div class="small-6 medium-4 columns">
             <a href="{{ nextRace.venue.url }}" target="_blank">
               <img class="venue-image" src="/uploads/{{ nextRace.venue.logoUrl }}" alt="Venue" />
             </a>
             <h4 class="race-special">{{ nextRace.name }}</h4>
           </div>
-          <div class="large-4 columns sponsor show-for-large">
+          <div class="medium-4 columns sponsor show-for-large">
             <h4>Sponsor</h4>
             <a href="{{ raceSponsor.url }}" target="_blank">
               <img class="sponsor-image" src="/uploads/{{ raceSponsor.logoUrl }}" alt="Sponsor" />
@@ -45,11 +45,11 @@
       <div class="item">
         <div class="card row">
           <img class="card-background" src="/img/wasatchLake.jpg" alt="Running!" />
-          <div class="large-8 columns">
+          <div class="medium-8 columns">
             <h1>{{ homepage.card1Header }}</h1>
             <h3>{{ homepage.card1Text }}</h3>
           </div>
-          <div class="large-4 columns">
+          <div class="medium-4 columns">
             <img class="card-image" src="/uploads/{{ homepage.card1Image }}" alt="Trails" />
           </div>
         </div>
@@ -57,11 +57,11 @@
       <div class="item">
         <div class="card">
           <img class="card-background" src="/img/wasatchValley.jpg" alt="Running!" />
-          <div class="large-8 columns">
+          <div class="medium-8 columns">
             <h1>{{ homepage.card2Header }}</h1>
             <h3>{{ homepage.card2Text }}</h3>
           </div>
-          <div class="large-4 columns">
+          <div class="medium-4 columns">
             <img class="card-image" src="/uploads/{{ homepage.card2Image }}" alt="Trails" />
           </div>
         </div>
@@ -70,10 +70,10 @@
   </div>
 </div>
 <div class="row show-for-small-only">
-  <div class="large-11 large-centered columns">
+  <div class="medium-11 medium-centered columns">
     <div class="owl-carousel hero-flipper-mobile"> 
       <div class="next-race-card hero-flipper-item-mobile">
-        <div class="large-12 columns">
+        <div class="medium-12 columns">
           <h5>Next Race:<span class="date" style="display:inline;">{{ nextRace.date }}</span></h5>
         </div>
         <div class="small-6 columns">
@@ -93,8 +93,8 @@
 </div>
 
 <div class="row">
-  <div class="large-12 columns home-main">
-    <div class="large-12 columns">
+  <div class="medium-12 columns home-main">
+    <div class="medium-12 columns">
       <div class="row">
         <div class="large-5 small-8 columns">
           <div class="readmore-mobile">
@@ -113,9 +113,9 @@
       </div>
     </div>
   </div>
-  <div class="large-12 columns">
+  <div class="medium-12 columns">
   <div class="row home-races">
-    <div class="large-9 columns">
+    <div class="medium-8 columns">
       <a name="Races"></a>
       <h2>Races</h2>
       <hr/>
@@ -152,7 +152,7 @@
           </tbody>
         </table>
       </div>
-      <div class="large-3 columns right-sponsors">
+      <div class="medium-3 columns right-sponsors">
         <h2>Sponsors</h2>
         <hr/>
         {{#each sponsors}}
