@@ -6,7 +6,7 @@
           <div class="medium-12 columns">
             <h3>Next Race: <span class="date">{{ nextRace.date }}</span></h3>
           </div>
-          <div class="small-6 medium-4 columns race-info">
+          <div class="small-6 columns race-info">
             <div class="row">
               <div class="small-12 columns">
                 <span>Location: <a style="display:inline;" href="{{ nextRace.venue.directionsUrl }}">{{ nextRace.venue.name }}</a></span>
@@ -28,17 +28,11 @@
               </div>
             </div>
           </div>
-          <div class="small-6 medium-4 columns">
+          <div class="small-6 columns">
             <a href="{{ nextRace.venue.url }}" target="_blank">
               <img class="venue-image" src="/uploads/{{ nextRace.venue.logoUrl }}" alt="Venue" />
             </a>
             <h4 class="race-special">{{ nextRace.name }}</h4>
-          </div>
-          <div class="medium-4 columns sponsor show-for-large">
-            <h4>Sponsor</h4>
-            <a href="{{ raceSponsor.url }}" target="_blank">
-              <img class="sponsor-image" src="/uploads/{{ raceSponsor.logoUrl }}" alt="Sponsor" />
-            </a>
           </div>
         </div>
       </div>
@@ -115,7 +109,7 @@
   </div>
   <div class="medium-12 columns">
   <div class="row home-races">
-    <div class="medium-8 columns">
+    <div class="medium-8 small-12 columns">
       <a name="Races"></a>
       <h2>Races</h2>
       <hr/>
@@ -152,7 +146,7 @@
           </tbody>
         </table>
       </div>
-      <div class="medium-3 columns right-sponsors">
+      <div class="medium-3 small-12 columns right-sponsors">
         <h2>Sponsors</h2>
         <hr/>
         {{#each sponsors}}
