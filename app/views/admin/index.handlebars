@@ -5,8 +5,7 @@
       <div class="row">
         <div class="large-6 columns">
           <label>Homepage Card 1
-            <input type="text" placeholder="(Header)" name="card1Header" value="{{ homepage.card1Header }}" />
-            <textarea form="homepageForm" value="{{ homepage.card1Text }}" name="card1Text">{{ homepage.card1Text }}</textarea>
+            <textarea class="jquery-te" form="homepageForm" value="{{ homepage.card1Text }}" name="card1Text">{{ homepage.card1Text }}</textarea>
             <input type="file" placeholder="(Course Image)" name="fileupload" />
             {{#if homepage.card1Image }}
               <img class="logo-tiny" src="/uploads/{{ homepage.card1Image }}" alt="Logo" />
@@ -15,8 +14,7 @@
         </div>
         <div class="large-6 columns">
           <label>Homepage Card 2
-            <input type="text" placeholder="(Header)" name="card2Header" value="{{ homepage.card2Header }}" />
-            <textarea form="homepageForm" value="{{ homepage.card2Text }}" name="card2Text">{{ homepage.card2Text }}</textarea>
+            <textarea class="jquery-te" form="homepageForm" value="{{ homepage.card2Text }}" name="card2Text">{{ homepage.card2Text }}</textarea>
             <input type="file" placeholder="(Course Image)" name="fileupload" />
             {{#if homepage.card2Image }}
               <img class="logo-tiny" src="/uploads/{{ homepage.card2Image }}" alt="Logo" />
