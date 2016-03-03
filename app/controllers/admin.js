@@ -303,6 +303,7 @@ router.post('/homepage', isLoggedIn, function (req, res, next) {
     edit.mainText = req.body.mainText;
     edit.homepageVideo = req.body.homepageVideo;
     edit.seriesText = req.body.seriesText;
+    edit.registrationInfo = req.body.registrationInfo;
     edit.save().then(function () {
       req.flash('message', 'Saved!');
       res.redirect('/admin');

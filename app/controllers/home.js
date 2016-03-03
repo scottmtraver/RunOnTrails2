@@ -56,6 +56,16 @@ router.get('/series', getSponsors, function (req, res, next) {
     });
   });
 });
+router.get('/registration', getSponsors, function (req, res, next) {
+  Homepage.find({}).then(function (info) {
+    var registrationInfo = info[0].registrationInfo;
+    res.render('registration', {
+      title: 'Wasatch Trail Series',
+      sponsors: _.sample(req.sponsors, 3),
+      registrationInfo: registrationInfo
+    });
+  });
+});
 
 router.get('/results', getSponsors, function (req, res, next) {
   Race.find({}).sort('date').then(function (races) {//get all

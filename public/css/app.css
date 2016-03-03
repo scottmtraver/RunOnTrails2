@@ -137,6 +137,8 @@ a {
 .card-image {
   position: relative;
   top: 70px;
+  max-height: 250px;
+  border: 1px solid black;
 }
 .race-info {
   font-size: 1.5em;

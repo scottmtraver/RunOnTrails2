@@ -10,7 +10,8 @@ var HomepageSchema = new Schema({
   card2Image: String,
   mainText: String,
   homepageVideo: String,
-  seriesText: String
+  seriesText: String,
+  registrationInfo: String
 });
 
 mongoose.model('Homepage', HomepageSchema);
