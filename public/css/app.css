@@ -123,6 +123,7 @@ a {
   z-index: -1;
   opacity: .7;
   height: 340px;
+  width: 100%;
   overflow: hidden;
 }
 .card h1, .card h3 {
