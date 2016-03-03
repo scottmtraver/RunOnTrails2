@@ -180,6 +180,11 @@ a {
 .home-races h2 {
   text-align: center;
 }
+.home-registration {
+  display: block;
+  color: red;
+  text-align: center;
+}
 
 .home-main, .sponsor-main, .race-main, .admin-main {
   background-color: white;
