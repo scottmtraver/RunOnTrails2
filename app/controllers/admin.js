@@ -123,6 +123,17 @@ router.post('/sponsor', isLoggedIn, function (req, res, next) {
     });
   }
 });
+//DELETE SPONSOR
+router.get('/deleteSponsor/:id', isLoggedIn, function (req, res, next) {
+  if(req.params.id && req.params.id != 0) {
+    Sponsor.findById(req.params.id).remove().then(function () {
+      req.flash('message', 'Sponsor Deleted!');
+      res.redirect('/admin/sponsors');
+    });
+  }
+  req.flash('message', 'Sponsor Deleted!');
+  res.redirect('/admin/sponsors');
+});
 //races
 router.get('/races', isLoggedIn, function (req, res, next) {
   Race.find({}).sort('date').then(function (races) {
@@ -210,6 +221,7 @@ router.post('/race', isLoggedIn, function (req, res, next) {
 router.get('/deleteRace/:id', isLoggedIn, function (req, res, next) {
   if(req.params.id && req.params.id != 0) {
     Race.findById(req.params.id).remove().then(function () {
+      req.flash('message', 'Race Deleted!');
       res.redirect('/admin/races');
     });
   }
