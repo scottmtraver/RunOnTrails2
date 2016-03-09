@@ -36,7 +36,8 @@ module.exports = function(app, config) {
   }));
   app.use(cookieParser());
   app.use(compress());
-  app.use(express.static(config.root + '/public'));
+  app.use(express.static(config.root + '/public', { maxAge: 86400000 }));
+  app.use(express.static(config.root + '/uploads', { maxAge: 86400000 }));
   app.use(methodOverride());
   app.use(flash());
 
