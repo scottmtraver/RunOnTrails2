@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
 var RaceSchema = new Schema({
   name: String,
   date: Date,
+  seodate: String,
   seriesNum: String,
   registrationTime: String,
   startTime: String,

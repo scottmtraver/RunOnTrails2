@@ -1,6 +1,7 @@
 var _ = require('underscore');
 var express = require('express'),
   router = express.Router(),
+  moment = require('moment'),
   mongoose = require('mongoose'),
   Race = mongoose.model('Race'),
   Homepage = mongoose.model('Homepage'),
@@ -78,13 +79,23 @@ router.get('/results', getSponsors, function (req, res, next) {
   });
 });
 
-
-router.get('/race/:id', getSponsors, function (req, res, next) {
-  Race.findById(req.params.id).then(function (race) {
+//SEO Race Route
+router.get('/RaceInfo/:date', getSponsors, function (req, res, next) {
+  Race.findOne({ seodate: req.params.date }).then(function (race) {
     res.render('race', {
       title: 'Wasatch Trail Series',
       race: race,
       raceSponsor: _.sample(req.sponsors)
     });
+  });
+});
+//Race By ID
+router.get('/race/:id', getSponsors, function (req, res, next) {
+  //Redirect to race with seodate
+  Race.findById(req.params.id).then(function (race) {
+    if(!race.seodate) {
+      race.seodate = moment(race.date).format("MMM D YYYY").replace(/\s+/g, '-');
+    }
+    res.redirect('/RaceInfo/' + race.seodate);
   });
 });

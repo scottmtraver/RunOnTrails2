@@ -1,5 +1,6 @@
 var express = require('express'),
   router = express.Router(),
+  moment = require('moment'),
   passport = require('passport'),
   mongoose = require('mongoose'),
   Venue = mongoose.model('Venue'),
@@ -172,11 +173,13 @@ router.post('/race', isLoggedIn, function (req, res, next) {
   if(req.files.length) {
     filename = req.files[0].filename;
   }
+  var seodate = moment(req.body.date).format("MMM D YYYY").replace(/\s+/g, '-');
   if(!req.body.id || req.body.id == 0) {
     Venue.findById(req.body.venueID).then(function (venue) {
       var race = new Race({
         name: req.body.name,
         date: req.body.date,
+        seodate: seodate,
         seriesNum: req.body.seriesNum,
         registrationTime: req.body.registrationTime,
         startTime: req.body.startTime,
@@ -197,6 +200,7 @@ router.post('/race', isLoggedIn, function (req, res, next) {
       Venue.findById(req.body.venueID).then(function (venue) {
         race.name = req.body.name;
         race.date = req.body.date;
+        race.seodate = seodate,
         race.seriesNum = req.body.seriesNum;
         race.registrationTime = req.body.registrationTime;
         race.startTime = req.body.startTime;
