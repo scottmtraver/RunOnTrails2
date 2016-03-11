@@ -79,23 +79,21 @@ router.get('/results', getSponsors, function (req, res, next) {
   });
 });
 
-//SEO Race Route
-router.get('/RaceInfo/:date', getSponsors, function (req, res, next) {
-  Race.findOne({ seodate: req.params.date }).then(function (race) {
+router.get('/race/:id', getSponsors, function (req, res, next) {
+  //Depricated route using race id
+  if(req.params.id.charAt(0) == '5') {//5 was start of all race id's
+    Race.findById(req.params.id).then(function (race) {
+      res.redirect('/race/' + race.seodate);
+    });
+    return;
+  }
+  //Race by SEO Date
+  Race.findOne({ seodate: req.params.id }).then(function (race) {
     res.render('race', {
       title: 'Wasatch Trail Series',
       race: race,
       raceSponsor: _.sample(req.sponsors)
     });
   });
-});
-//Race By ID
-router.get('/race/:id', getSponsors, function (req, res, next) {
   //Redirect to race with seodate
-  Race.findById(req.params.id).then(function (race) {
-    if(!race.seodate) {
-      race.seodate = moment(race.date).format("MMM D YYYY").replace(/\s+/g, '-');
-    }
-    res.redirect('/RaceInfo/' + race.seodate);
-  });
 });

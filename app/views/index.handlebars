@@ -24,7 +24,7 @@
                 <span>Distance: {{ nextRace.distances }}</span>
               </div>
               <div class="small-12 columns">
-                <a href="/RaceInfo/{{ nextRace.seodate }}">More Info</a>
+                <a href="/race/{{ nextRace.seodate }}">More Info</a>
               </div>
             </div>
           </div>
@@ -66,7 +66,7 @@
           <a href="{{ nextRace.venue.url }}" target="_blank">
             <img class="venue-image-mobile" src="/uploads/{{ nextRace.venue.logoUrl }}" alt="Venue" />
           </a>
-          <a href="/RaceInfo/{{ nextRace.seodate }}">More Info</a>
+          <a href="/race/{{ nextRace.seodate }}">More Info</a>
         </div>
       </div>
     </div>
@@ -137,10 +137,10 @@
               <td>{{ startTime }}</td>
               <td>{{ venue.name }}</td>
               <td>
-                <a href="/RaceInfo/{{ seodate }}">Info</a>
+                <a href="/race/{{ seodate }}">Info</a>
                 {{#if results }}
                 &nbsp;
-                <a href="/RaceInfo/{{ seodate }}">Results</a>
+                <a href="/race/{{ seodate }}">Results</a>
                 {{/if}}
               </td>
             </tr>
