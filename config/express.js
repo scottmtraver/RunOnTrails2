@@ -13,6 +13,7 @@ var flash = require('connect-flash');
 var multer = require('multer');
 var crypto = require('crypto');
 var mime = require('mime');
+var _ = require('underscore');
 
 var passport = require('passport');
 
@@ -68,6 +69,14 @@ module.exports = function(app, config) {
   app.use(passport.initialize());
   app.use(passport.session());
 
+  //redirect if necessary
+  app.use(function (req, res, next) {
+    if(_.contains(config.redirects, req.url)) {
+      res.redirect('/');
+      return;
+    }
+    next();
+  });
 
   var controllers = glob.sync(config.root + '/app/controllers/*.js');
   controllers.forEach(function (controller) {

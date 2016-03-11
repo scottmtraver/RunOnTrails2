@@ -1,5 +1,6 @@
 var path = require('path'),
     rootPath = path.normalize(__dirname + '/..'),
+    redirects = require('./redirects.json'),
     env = process.env.NODE_ENV || 'development';
 
 var config = {
@@ -9,7 +10,8 @@ var config = {
       name: 'runontrails'
     },
     port: 3000,
-    db: 'development:27017/RunOnTrails'
+    db: 'development:27017/RunOnTrails',
+    redirects: redirects
   },
 
   test: {
@@ -18,7 +20,8 @@ var config = {
       name: 'runontrails'
     },
     port: 3000,
-    db: 'development:27017/RunOnTrails-development'
+    db: 'development:27017/RunOnTrails-development',
+    redirects: redirects
   },
 
   production: {
@@ -27,7 +30,8 @@ var config = {
       name: 'runontrails'
     },
     port: 3000,
-    db: 'runontrailsdb:27017/RunOnTrails'
+    db: 'runontrailsdb:27017/RunOnTrails',
+    redirects: redirects
   }
 };
 
