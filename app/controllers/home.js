@@ -11,14 +11,24 @@ var express = require('express'),
 
 //middleware
 var base = {
-  title: 'Wasatch Trail Series'
+  title: 'Wasatch Trail Series',
+  helpers: {
+    nsponsors: function(ary, max, options) {
+      if(!ary || ary.length == 0)
+          return options.inverse(this);
+      var result = [ ];
+      for(var i = 0; i < max && i < ary.length; ++i)
+          result.push(options.fn(ary[i]));
+      return result.join('');
+    }
+  }
 };
 
 function pageTemplate (req, res, next) {
   Sponsor.find({}).then(function (sponsors) {
     req.base = {};
     extend(true, req.base, base);
-    req.base.sponsors = _.sample(sponsors, 3);
+    req.base.sponsors = _.sample(sponsors, 10);
     req.base.allSponsors = sponsors;
     next();
   });
@@ -81,7 +91,7 @@ router.get('/race/:id', function (req, res, next) {
   }
   //Race by SEO Date
   Race.findOne({ seodate: req.params.id }).then(function (race) {
-    extend(req.base, { race: race });
+    extend(req.base, { race: race, raceSponsor: req.base.sponsors[0] });
     res.render('race', req.base);
   });
 });
