@@ -1,6 +1,7 @@
 var _ = require('underscore');
 var express = require('express'),
   router = express.Router(),
+  extend = require('extend'),
   moment = require('moment'),
   mongoose = require('mongoose'),
   Race = mongoose.model('Race'),
@@ -8,78 +9,69 @@ var express = require('express'),
   Sponsor = mongoose.model('Sponsor');
 
 
-function getSponsors (req, res, next) {
+//middleware
+var base = {
+  title: 'Wasatch Trail Series'
+};
+
+function pageTemplate (req, res, next) {
   Sponsor.find({}).then(function (sponsors) {
-    req.sponsors = sponsors;
-    return next();
+    req.base = {};
+    extend(true, req.base, base);
+    req.base.sponsors = _.sample(sponsors, 3);
+    req.base.allSponsors = sponsors;
+    next();
   });
 }
 
 module.exports = function (app) {
+  app.use(pageTemplate);
   app.use('/', router);
 };
 
-router.get('/', getSponsors, function (req, res, next) {
+//Routes
+router.get('/', function (req, res, next) {
   var racesP = Race.find({}).sort('date');
   var homepageP = Homepage.find({});
   Promise.all([racesP, homepageP]).then(function (values) {
     var races = values[0];
+    var nextRace = _.find(races, function (r) { return r.date > Date.now() });
     var home = values[1][0];//first
     _.find(races, function (r) { return r.date > Date.now() }).nextRace = true;
-    res.render('index', {
-      title: 'Wasatch Trail Series',
-      races: races,
-      nextRace: _.find(races, function (r) { return r.date > Date.now() }),
-      sponsors: _.sample(req.sponsors, 3),
-      raceSponsor: _.sample(req.sponsors),
-      homepage: home
-    });
+    extend(req.base, { races: races, nextRace: nextRace, homepage: home })
+    res.render('index', req.base);
   });
 });
 
 router.get('/sponsors', function (req, res, next) {
   Sponsor.find(function (err, sponsors) {//get all
     if (err) return next(err);
-    res.render('sponsors', {
-      title: 'Wasatch Trail Series',
-      sponsors: sponsors
-    });
+    res.render('sponsors', req.base);
   });
 });
 
-router.get('/series', getSponsors, function (req, res, next) {
+router.get('/series', function (req, res, next) {
   Homepage.find({}).then(function (info) {
-    var seriesInfo = info[0].seriesText;
-    res.render('series', {
-      title: 'Wasatch Trail Series',
-      sponsors: _.sample(req.sponsors, 3),
-      seriesInfo: seriesInfo
-    });
+    extend(req.base, { seriesInfo: info[0].seriesText });
+    res.render('series', req.base);
   });
 });
-router.get('/registration', getSponsors, function (req, res, next) {
+router.get('/registration', function (req, res, next) {
   Homepage.find({}).then(function (info) {
-    var registrationInfo = info[0].registrationInfo;
-    res.render('registration', {
-      title: 'Wasatch Trail Series',
-      sponsors: _.sample(req.sponsors, 3),
-      registrationInfo: registrationInfo
-    });
+    extend(req.base, { registrationInfo: info[0].registrationInfo });
+    res.render('registration', req.base);
   });
 });
 
-router.get('/results', getSponsors, function (req, res, next) {
+router.get('/results', function (req, res, next) {
   Race.find({}).sort('date').then(function (races) {//get all
     _.find(races, function (r) { return r.date > Date.now() }).nextRace = true;
-    res.render('results', {
-      title: 'Wasatch Trail Series',
-      races: races,
-      sponsors: _.sample(req.sponsors, 6)
-    });
+    extend(req.base, { races: races });
+    res.render('results', req.base);
   });
 });
 
-router.get('/race/:id', getSponsors, function (req, res, next) {
+router.get('/race/:id', function (req, res, next) {
   //Depricated route using race id
   if(req.params.id.charAt(0) == '5') {//5 was start of all race id's
     Race.findById(req.params.id).then(function (race) {
@@ -89,11 +81,7 @@ router.get('/race/:id', getSponsors, function (req, res, next) {
   }
   //Race by SEO Date
   Race.findOne({ seodate: req.params.id }).then(function (race) {
-    res.render('race', {
-      title: 'Wasatch Trail Series',
-      race: race,
-      raceSponsor: _.sample(req.sponsors)
-    });
+    extend(req.base, { race: race });
+    res.render('race', req.base);
   });
-  //Redirect to race with seodate
 });
