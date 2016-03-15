@@ -198,6 +198,12 @@ a {
     display: none;
   }
 }
+.center {
+  text-align: center;
+}
+.social-link {
+  display: block;
+}
 
 .home-main, .sponsor-main, .race-main, .admin-main {
   background-color: white;
