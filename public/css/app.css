@@ -10,6 +10,27 @@ a {
   position: relative;
   top: -400px;
 }
+.footer {
+  position: relative;
+  top: -400px;
+}
+.footer span {
+  display: block;
+  width: 300px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: .5;
+  transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -webkit-transition: opacity .5s ease-in-out;
+}
+.footer span:hover {
+  opacity: 1;
+  transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -webkit-transition: opacity .5s ease-in-out;
+}
 .logo {
   position: absolute;
   z-index: 10;
@@ -84,14 +105,14 @@ a {
   background-size: cover;
 }
 .hero-image h1 {
-    text-align: center;
-    margin-top: 50px;
-    z-index: 1;
-    position: absolute;
-    width: 100%;
-    color: #2BB7EA;
-    font-weight: 700;
-    font-size: 56px;
+  text-align: center;
+  margin-top: 50px;
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  color: #2BB7EA;
+  font-weight: 700;
+  font-size: 56px;
 }
 
 .hero-flipper {
@@ -193,7 +214,7 @@ a {
   text-align: center;
 }
 @media only screen 
-  and (orientation: landscape) {
+and (orientation: landscape) {
   .home-races-link {
     display: none;
   }
