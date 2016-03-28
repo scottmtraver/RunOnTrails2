@@ -192,6 +192,25 @@ a {
 .sponsor {
   border-left: 1px solid grey;
 }
+.home-sponsor {
+  position: relative;
+  top: 75px;
+  max-width: 150px;
+}
+.home-sponsor-left {
+  left: 10px;
+}
+.home-sponsor-right {
+  float: right;
+  right: 10px;
+}
+.home-sponsor-below-video {
+    margin-bottom: 20px;
+    max-height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    display: inherit;
+}
 .course-image {
   border: 1px solid grey;
 }
