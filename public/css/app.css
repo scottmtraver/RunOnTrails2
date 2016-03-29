@@ -207,9 +207,6 @@ a {
 .home-sponsor-below-video {
     margin-bottom: 20px;
     max-height: 150px;
-    margin-left: auto;
-    margin-right: auto;
-    display: inherit;
 }
 .course-image {
   border: 1px solid grey;
