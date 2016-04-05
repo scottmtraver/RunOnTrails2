@@ -3,6 +3,7 @@ var express = require('express'),
   glob = require('glob'),
   passport = require('passport'),
   mongoose = require('mongoose');
+var forceDomain = require('forcedomain');
 
 mongoose.connect(config.db);
 var db = mongoose.connection;
@@ -24,7 +25,9 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
 var app = express();
-
+app.use(forceDomain({
+  hostname: 'www.runontrails.com'
+}));
 require('./config/express')(app, config);
 
 app.listen(config.port, function () {
