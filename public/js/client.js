@@ -13,7 +13,7 @@ $(document).ready(function () {
   owl.trigger('owl.play',10000);
 
   $('.date-slash').each(function (i, ele) {
-    var formatted = moment(ele.innerHTML).utc().calendar();
+    var formatted = moment(ele.innerHTML).utc().format('M/D/YYYY');
     ele.innerHTML = formatted;
   });
 }); 
