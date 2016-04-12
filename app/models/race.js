@@ -12,6 +12,7 @@ var RaceSchema = new Schema({
   cost: String,
   distances: String,
   courseUrl: String,
+  resultsUrl: String,
   courseDescription: String,
   special: String,
   venue: Venue

@@ -145,10 +145,10 @@
                 <td>{{ startTime }}</td>
                 <td>{{ venue.name }}</td>
                 <td>
-                  <a href="/race/{{ seodate }}">Info</a>
-                  {{#if results }}
-                  &nbsp;
+                  {{#if resultsUrl }}
                   <a href="/race/{{ seodate }}">Results</a>
+                  {{else}}
+                  <a href="/race/{{ seodate }}">Info</a>
                   {{/if}}
                 </td>
               </tr>

@@ -70,6 +70,12 @@
               <img src="/uploads/{{ race.courseUrl }}" alt="Logo" />
             {{/if}}
           </label>
+          <label>Race Results
+            <input type="file" placeholder="(Results File)" name="fileupload" />
+            {{#if race.resultsUrl }}
+              <span>Results Uploaded!</span>
+            {{/if}}
+          </label>
         </div>
       </div>
       <input type="submit" value="Submit" class="button"/>

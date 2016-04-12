@@ -41,6 +41,14 @@
   <hr/>
 </div>
 <div class="row race-main">
+{{#if race.resultsUrl }}
+  <div class="small-12 columns">
+  <h2 style="text-align:center;">Results:
+    <a href="/uploads/{{ race.resultsUrl }}" target="_blank">Click Here</a>
+  </h2>
+  </br>
+</div>
+{{/if}}
   <div class="small-5 large-offset-1 columns">
     <h4>Course:</h4>
     <p>

@@ -48,9 +48,8 @@ module.exports = function(app, config) {
       cb(null, './public/uploads/')
     },
     filename: function (req, file, cb) {
-      crypto.pseudoRandomBytes(16, function (err, raw) {
-        cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
-      });
+      var name = file.originalname.substring(0, file.originalname.indexOf('.')).split(' ').join('_');
+      cb(null, name + '.' + mime.extension(file.mimetype));
     }
   });
   var upload = multer({ storage: storage });

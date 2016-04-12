@@ -169,9 +169,16 @@ router.get('/race/:id', isLoggedIn, function (req, res, next) {
   }
 });
 router.post('/race', isLoggedIn, function (req, res, next) {
-  var filename;
-  if(req.files.length) {
+  var filename, resultsUrl;
+  if(req.files.length == 2) {//has both files
     filename = req.files[0].filename;
+    resultsUrl = req.files[1].filename;
+  } else if(req.files.length == 1) {//has 1 file
+    if(req.files[0].mimetype == 'text/html') {//it's results
+      resultsUrl = req.files[0].filename;
+    } else {
+      filename = req.files[0].filename;//it's course image
+    }
   }
   var seodate = moment(req.body.date).format("MMM D YYYY").replace(/\s+/g, '-');
   if(!req.body.id || req.body.id == 0) {
@@ -186,6 +193,7 @@ router.post('/race', isLoggedIn, function (req, res, next) {
         cost: req.body.cost,
         distances: req.body.distances,
         courseUrl: filename,
+        resultsUrl: resultsUrl,
         courseDescription: req.body.courseDescription,
         special: req.body.special,
         venue: venue
@@ -201,13 +209,16 @@ router.post('/race', isLoggedIn, function (req, res, next) {
         race.name = req.body.name;
         race.date = req.body.date;
         race.seodate = seodate,
-        race.seriesNum = req.body.seriesNum;
+          race.seriesNum = req.body.seriesNum;
         race.registrationTime = req.body.registrationTime;
         race.startTime = req.body.startTime;
         race.cost = req.body.cost;
         race.distances = req.body.distances;
         if(filename) {
           race.courseUrl = filename;
+        }
+        if(resultsUrl) {
+          race.resultsUrl = resultsUrl
         }
         race.courseDescription = req.body.courseDescription;
         race.special = req.body.special;
