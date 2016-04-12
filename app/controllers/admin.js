@@ -305,11 +305,20 @@ router.post('/venue', isLoggedIn, function (req, res, next) {
 
 //Homepage
 router.post('/homepage', isLoggedIn, function (req, res, next) {
-  var card1Image, card2Image;
-  if(req.files.length == 2) {//has first image
-    card1Image = req.files[0].filename;
-    card2Image = req.files[1].filename;
-  }
+  var cardImages = []
+  var seriesResults;
+
+  if(req.files.length > 0) {//has 3 files
+    for(var i = 0; i < req.files.length; i++) {
+      var cur = req.files[i];
+      if(cur.mimetype == 'text/html') {
+        seriesResults = cur.filename;
+      } else {
+        cardImages.shift(cur.filename);
+      }
+    }
+  } 
+
   Homepage.find({}).then(function (homepage) {
     var edit;
     if(homepage.length == 0) {
@@ -319,17 +328,21 @@ router.post('/homepage', isLoggedIn, function (req, res, next) {
     }
     edit.card1Header = req.body.card1Header;
     edit.card1Text = req.body.card1Text;
-    if(req.files.length) {
-      edit.card1Image = card1Image;
+    if(cardImages.length > 0) {
+      edit.card1Image = cardImages[0];
     }
     edit.card2Header = req.body.card2Header;
     edit.card2Text = req.body.card2Text;
-    if(req.files.length) {
-      edit.card2Image = card2Image;
+    if(cardImages.length > 1) {
+      edit.card2Image = cardImages[1];
     }
     edit.mainText = req.body.mainText;
     edit.homepageVideo = req.body.homepageVideo;
     edit.seriesText = req.body.seriesText;
+    if(seriesResults) {
+      console.log(seriesResults);
+      edit.seriesResultsUrl = seriesResults;
+    }
     edit.registrationInfo = req.body.registrationInfo;
     edit.save().then(function () {
       req.flash('message', 'Saved!');

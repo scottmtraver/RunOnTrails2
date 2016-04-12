@@ -11,7 +11,8 @@ var HomepageSchema = new Schema({
   mainText: String,
   homepageVideo: String,
   seriesText: String,
-  registrationInfo: String
+  registrationInfo: String,
+  seriesResultsUrl: String
 });
 
 mongoose.model('Homepage', HomepageSchema);

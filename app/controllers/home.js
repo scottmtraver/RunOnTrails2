@@ -62,7 +62,7 @@ router.get('/sponsors', function (req, res, next) {
 
 router.get('/series', function (req, res, next) {
   Homepage.find({}).then(function (info) {
-    extend(req.base, { seriesInfo: info[0].seriesText });
+    extend(req.base, { seriesInfo: info[0].seriesText, results: info[0].seriesResultsUrl });
     res.render('series', req.base);
   });
 });

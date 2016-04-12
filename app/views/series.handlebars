@@ -1,5 +1,8 @@
 <div class="row sponsor-main">
   <div class="medium-8 small-12 columns">
+    {{#if results}}
+      <h3>Current Point Standings: <a href="/uploads/{{ results }}" target="_blank">Click Here</a></h3>
+    {{/if}}
     {{{ seriesInfo }}}
   </div>
   <div class="medium-3 small-12 columns right-sponsors">

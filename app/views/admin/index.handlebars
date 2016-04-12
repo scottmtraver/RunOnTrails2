@@ -44,6 +44,17 @@
       </div>
       <div class="row">
         <div class="large-12 columns">
+          <label>Series Results Upload
+            <input type="file" placeholder="Series Points" name="fileupload" />
+            {{#if homepage.seriesResultsUrl }}
+              <span>Results Uploaded</span>
+            {{/if}}
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+        <hr/>
           <label>Registration Text
             <textarea class="jquery-te" form="homepageForm" value="{{ homepage.registrationInfo }}" name="registrationInfo">{{ homepage.registrationInfo }}</textarea>
           </label>
