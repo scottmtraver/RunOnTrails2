@@ -43,11 +43,13 @@ module.exports = function (app) {
 router.get('/', function (req, res, next) {
   var racesP = Race.find({}).sort('date');
   var homepageP = Homepage.find({});
+  var today = new Date();
+  var yesterday = new Date(today.setDate(today.getDate() - 1));
   Promise.all([racesP, homepageP]).then(function (values) {
     var races = values[0];
-    var nextRace = _.find(races, function (r) { return r.date > Date.now() });
+    var nextRace = _.find(races, function (r) { return r.date > yesterday });
     var home = values[1][0];//first
-    _.find(races, function (r) { return r.date > Date.now() }).nextRace = true;
+    _.find(races, function (r) { return r.date > yesterday }).nextRace = true;
     extend(req.base, { races: races, nextRace: nextRace, homepage: home })
     res.render('index', req.base);
   });
@@ -74,8 +76,10 @@ router.get('/registration', function (req, res, next) {
 });
 
 router.get('/results', function (req, res, next) {
+  var today = new Date();
+  var yesterday = new Date(today.setDate(today.getDate() - 1));
   Race.find({}).sort('date').then(function (races) {//get all
-    _.find(races, function (r) { return r.date > Date.now() }).nextRace = true;
+    _.find(races, function (r) { return r.date > yesterday }).nextRace = true;
     extend(req.base, { races: races });
     res.render('results', req.base);
   });
