@@ -305,16 +305,16 @@ router.post('/venue', isLoggedIn, function (req, res, next) {
 
 //Homepage
 router.post('/homepage', isLoggedIn, function (req, res, next) {
-  var cardImages = []
+  var cardImages;
   var seriesResults;
 
-  if(req.files.length > 0) {//has 3 files
+  if(req.files.length > 0) {//has files
     for(var i = 0; i < req.files.length; i++) {
       var cur = req.files[i];
       if(cur.mimetype == 'text/html') {
         seriesResults = cur.filename;
       } else {
-        cardImages.shift(cur.filename);
+        cardImages = cur.filename;
       }
     }
   } 
@@ -328,19 +328,13 @@ router.post('/homepage', isLoggedIn, function (req, res, next) {
     }
     edit.card1Header = req.body.card1Header;
     edit.card1Text = req.body.card1Text;
-    if(cardImages.length > 0) {
-      edit.card1Image = cardImages[0];
-    }
-    edit.card2Header = req.body.card2Header;
-    edit.card2Text = req.body.card2Text;
-    if(cardImages.length > 1) {
-      edit.card2Image = cardImages[1];
+    if(cardImages) {
+      edit.card1Image = cardImages;
     }
     edit.mainText = req.body.mainText;
     edit.homepageVideo = req.body.homepageVideo;
     edit.seriesText = req.body.seriesText;
     if(seriesResults) {
-      console.log(seriesResults);
       edit.seriesResultsUrl = seriesResults;
     }
     edit.registrationInfo = req.body.registrationInfo;
