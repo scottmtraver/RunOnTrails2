@@ -71,7 +71,7 @@ router.get('/gallery', function (req, res, next) {
     var mergedPhotos = [];
     pictures.forEach(function (p, i) {
       if(i != 0 && i % 5 == 0) {
-        var sponsor = req.base.allSponsors.pop();
+        var sponsor = _.sample(req.base.allSponsors, 1)[0];
         mergedPhotos.push({
           url: sponsor.logoUrl
         });
