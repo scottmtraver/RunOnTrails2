@@ -49,7 +49,9 @@ router.get('/', function (req, res, next) {
     var races = values[0];
     var nextRace = _.find(races, function (r) { return r.date > yesterday });
     var home = values[1][0];//first
-    _.find(races, function (r) { return r.date > yesterday }).nextRace = true;
+    if(races.length > 0) {
+      _.find(races, function (r) { return r.date > yesterday }).nextRace = true;
+    }
     extend(req.base, { races: races, nextRace: nextRace, homepage: home })
     res.render('index', req.base);
   });
