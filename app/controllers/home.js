@@ -6,6 +6,7 @@ var express = require('express'),
   mongoose = require('mongoose'),
   Race = mongoose.model('Race'),
   Homepage = mongoose.model('Homepage'),
+  Gallery = mongoose.model('Gallery'),
   Sponsor = mongoose.model('Sponsor');
 
 
@@ -61,6 +62,24 @@ router.get('/sponsors', function (req, res, next) {
   Sponsor.find(function (err, sponsors) {//get all
     if (err) return next(err);
     res.render('sponsors', req.base);
+  });
+});
+
+router.get('/gallery', function (req, res, next) {
+  Gallery.find({}).then(function (pictures) {
+    //every 5th image interject with a sponsor
+    var mergedPhotos = [];
+    pictures.forEach(function (p, i) {
+      if(i != 0 && i % 5 == 0) {
+        var sponsor = req.base.allSponsors.pop();
+        mergedPhotos.push({
+          url: sponsor.logoUrl
+        });
+      }
+      mergedPhotos.push(p);
+    });
+    extend(req.base, { photos: mergedPhotos });
+    res.render('gallery', req.base);
   });
 });
 

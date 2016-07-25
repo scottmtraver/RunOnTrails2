@@ -1,0 +1,14 @@
+<div class="row sponsor-main">
+  <div class="large-12 columns">
+    <h4>Thanks to all our sponsors!</h4>
+    <p>Click any photo to download!</p>
+    <hr />
+    <div class="small-up-2 medium-up-3 large-up-3">
+      {{#each photos }}
+        <div class="column">
+          <img class="gallery-image" src="/uploads/{{ url }}" alt="Race Photo">
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>

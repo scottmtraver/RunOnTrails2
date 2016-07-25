@@ -7,6 +7,7 @@ var express = require('express'),
   Account = mongoose.model('Account'),
   Race = mongoose.model('Race'),
   Homepage = mongoose.model('Homepage'),
+  Gallery = mongoose.model('Gallery'),
   Sponsor = mongoose.model('Sponsor');
 
 function isLoggedIn(req, res, next) {
@@ -343,4 +344,28 @@ router.post('/homepage', isLoggedIn, function (req, res, next) {
       res.redirect('/admin');
     });
   });
+});
+//Gallery
+router.get('/gallery', isLoggedIn, function (req, res, next) {
+  Gallery.find({}).then(function (images) {
+    res.render('admin/gallery', {
+      title: 'Wasatch Trail Series Admin: Photo Gallery',
+      layout: 'admin',
+      photos: images
+    });
+  });
+});
+router.post('/gallery', isLoggedIn, function (req, res, next) {
+  if(req.files.length) {
+    req.files.forEach(function (file) {
+      var upload = new Gallery({
+        url: file.filename,
+        dateUploaded: new Date()
+      });
+      //file resizing stuff here...
+      upload.save().then(function () {
+      });//unreturned save promise
+    });
+  }
+  res.redirect('/admin/gallery');
 });

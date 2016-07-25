@@ -1,0 +1,16 @@
+<div class="row admin-main">
+  <div class="large-12 columns">
+    <h4>Gallery</h4>
+    <form method="post" action="/admin/gallery" enctype="multipart/form-data" >
+      <input type="file" placeholder="(Image)" name="fileupload" multiple/>
+      <button type="submit" class="button">Upload</button>
+    </form>
+    <hr/>
+    <div class="small-up-2 medium-up-3 large-up-4">
+      {{#each photos }}
+      <div class="column">
+        <img class="gallery-image" src="/uploads/{{ url }}" alt="Race Photo">
+      </div>
+    {{/each}}
+  </div>
+</div>
