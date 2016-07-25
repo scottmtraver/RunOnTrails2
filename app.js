@@ -25,9 +25,6 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
 var app = express();
-app.use(forceDomain({
-  hostname: 'www.runontrails.com'
-}));
 require('./config/express')(app, config);
 
 app.listen(config.port, function () {

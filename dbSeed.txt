@@ -1,0 +1,4 @@
+db.Sponsor.insert({"name":"First Sponsor","url":"","logoUrl":""})
+db.Venue.insert({"name":"First Venue","url":"","logoUrl":"","directionUrl":""})
+db.Race.insert({"name":"First Race"})
+db.Homepage.insert({"mainText":"Homepage Default Text"})
