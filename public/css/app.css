@@ -285,3 +285,7 @@ and (orientation: landscape) {
   padding: 10px;
   width: 100%;
 }
+.promoted-link {
+  color: red;
+  font-size: 1.1em;
+}
