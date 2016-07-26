@@ -68,17 +68,7 @@ router.get('/sponsors', function (req, res, next) {
 router.get('/gallery', function (req, res, next) {
   Gallery.find({}).then(function (pictures) {
     //every 5th image interject with a sponsor
-    var mergedPhotos = [];
-    pictures.forEach(function (p, i) {
-      if(i != 0 && i % 5 == 0) {
-        var sponsor = _.sample(req.base.allSponsors, 1)[0];
-        mergedPhotos.push({
-          url: sponsor.logoUrl
-        });
-      }
-      mergedPhotos.push(p);
-    });
-    extend(req.base, { photos: mergedPhotos });
+    extend(req.base, {});
     res.render('gallery', req.base);
   });
 });

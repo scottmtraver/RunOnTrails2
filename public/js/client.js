@@ -43,11 +43,50 @@ function onYouTubeIframeAPIReady(event) {
 }
 
 function onPlayerReady(event) {
-   // do nothing, no tracking needed
+  // do nothing, no tracking needed
 }
 function onPlayerStateChange(event) {
-    // track when user clicks to Play
-    if (event.data == YT.PlayerState.PLAYING) {
-        _gaq.push(['_trackEvent', 'Videos', 'Play', 'Homepage Video']);
+  // track when user clicks to Play
+  if (event.data == YT.PlayerState.PLAYING) {
+    _gaq.push(['_trackEvent', 'Videos', 'Play', 'Homepage Video']);
+  }
+}
+
+//gallery code
+if(Vue) {
+  var page = 1;
+  var loading = true;
+  var v = new Vue({
+    el: '#gallery',
+    data: {
+      list: []
+    },
+    ready: function () {
+    },
+    methods: {
+      onInfinite: function () {
+        if(loading) {
+          setTimeout(function () {
+            $.get(
+              "/api/gallery",
+              { page : page },
+              function(images) {
+                if(!images.length) {
+                  v.$broadcast('$InfiniteLoading:noMore');
+                  loading = false;
+                  return;
+                }
+                page++;
+                images.forEach(function (image) {
+                  v.list.push(image);
+                  console.log(image.url);
+                });
+                v.$broadcast('$InfiniteLoading:loaded');
+              }
+            );
+          }.bind(this), 500);
+        }
+      }
     }
+  });
 }
