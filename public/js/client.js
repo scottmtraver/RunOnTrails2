@@ -53,9 +53,28 @@ function onPlayerStateChange(event) {
 }
 
 //gallery code
-if(Vue) {
+if(Vue && document.getElementById('gallery')) {
   var page = 1;
   var loading = true;
+  var loadGallery = function () {
+    $.get(
+      "/api/gallery",
+      { page : page },
+      function(images) {
+        if(!images.length) {
+          v.$broadcast('$InfiniteLoading:noMore');
+          loading = false;
+          return;
+        }
+        page++;
+        images.forEach(function (image) {
+          v.list.push(image);
+        });
+        v.$broadcast('$InfiniteLoading:loaded');
+      }
+    );
+
+  };
   var v = new Vue({
     el: '#gallery',
     data: {
@@ -67,26 +86,11 @@ if(Vue) {
       onInfinite: function () {
         if(loading) {
           setTimeout(function () {
-            $.get(
-              "/api/gallery",
-              { page : page },
-              function(images) {
-                if(!images.length) {
-                  v.$broadcast('$InfiniteLoading:noMore');
-                  loading = false;
-                  return;
-                }
-                page++;
-                images.forEach(function (image) {
-                  v.list.push(image);
-                  console.log(image.url);
-                });
-                v.$broadcast('$InfiniteLoading:loaded');
-              }
-            );
+            loadGallery();
           }.bind(this), 500);
         }
       }
     }
   });
+  loadGallery();
 }
