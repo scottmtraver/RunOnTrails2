@@ -49,9 +49,15 @@ router.get('/', function (req, res, next) {
   Promise.all([racesP, homepageP]).then(function (values) {
     var races = values[0];
     var nextRace = _.find(races, function (r) { return r.date > yesterday });
+    if(!nextRace) {
+      nextRace = _.last(races);
+    }
     var home = values[1][0];//first
     if(races.length > 0) {
-      _.find(races, function (r) { return r.date > yesterday }).nextRace = true;
+      var temp = _.find(races, function (r) { return r.date > yesterday });
+      if(temp) {
+        temp.nextRace = true;
+      }
     }
     extend(req.base, { races: races, nextRace: nextRace, homepage: home })
     res.render('index', req.base);
@@ -90,7 +96,10 @@ router.get('/results', function (req, res, next) {
   var today = new Date();
   var yesterday = new Date(today.setDate(today.getDate() - 1));
   Race.find({}).sort('date').then(function (races) {//get all
-    _.find(races, function (r) { return r.date > yesterday }).nextRace = true;
+    var temp = _.find(races, function (r) { return r.date > yesterday });
+    if(temp) {
+      temp.nextRace = true;
+    }
     extend(req.base, { races: races });
     res.render('results', req.base);
   });
