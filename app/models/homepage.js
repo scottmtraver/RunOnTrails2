@@ -12,6 +12,7 @@ var HomepageSchema = new Schema({
   homepageVideo: String,
   seriesText: String,
   registrationInfo: String,
+  finalResults: String,
   seriesResultsUrl: String
 });
 

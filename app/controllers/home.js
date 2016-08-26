@@ -75,7 +75,7 @@ router.get('/gallery', function (req, res, next) {
 
 router.get('/series', function (req, res, next) {
   Homepage.find({}).then(function (info) {
-    extend(req.base, { seriesInfo: info[0].seriesText, results: info[0].seriesResultsUrl });
+    extend(req.base, { seriesInfo: info[0].seriesText, results: info[0].seriesResultsUrl, finalResults: info[0].finalResults });
     res.render('series', req.base);
   });
 });

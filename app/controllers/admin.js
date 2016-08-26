@@ -335,6 +335,7 @@ router.post('/homepage', isLoggedIn, function (req, res, next) {
     edit.mainText = req.body.mainText;
     edit.homepageVideo = req.body.homepageVideo;
     edit.seriesText = req.body.seriesText;
+    edit.finalResults = req.body.finalResults;
     if(seriesResults) {
       edit.seriesResultsUrl = seriesResults;
     }
