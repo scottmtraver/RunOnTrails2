@@ -3,14 +3,14 @@ $(document).foundation();
 $(document).ready(function () {
   var owl = $('.owl-carousel');
   owl.owlCarousel({
-    navigation: true,
-    singleItem:true,
-    loop: true,
-    autoplay:true,
+    navigation: false,
+    items: 1,
+    loop: false,
+    autoplay:false,
     autoplayTimeout:10000,
     autoplayHoverPause:true
   });
-  owl.trigger('owl.play',10000);
+  //owl.trigger('owl.play',10000);
 
   $('.date-slash').each(function (i, ele) {
     var formatted = moment(ele.innerHTML).utc().format('M/D/YYYY');

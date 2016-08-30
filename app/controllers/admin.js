@@ -329,6 +329,7 @@ router.post('/homepage', isLoggedIn, function (req, res, next) {
     }
     edit.card1Header = req.body.card1Header;
     edit.card1Text = req.body.card1Text;
+    edit.card2Text = req.body.card2Text;
     if(cardImages) {
       edit.card1Image = cardImages;
     }
