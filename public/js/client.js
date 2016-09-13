@@ -1,16 +1,18 @@
 $(document).foundation();
 
 $(document).ready(function () {
-  var owl = $('.owl-carousel');
-  owl.owlCarousel({
-    navigation: false,
+
+  //bug fix
+  $('.owl-carousel').owlCarousel({
     items: 1,
-    loop: false,
-    autoplay:false,
-    autoplayTimeout:10000,
-    autoplayHoverPause:true
+    itemsDesktop: false,
+    itemsDesktopSmall: false,
+    itemsTablet: false,
+    itemsTabletSmall: false,
+    itemsMobile: false,
+    autoHeight: true,
+    autoPlay: true
   });
-  //owl.trigger('owl.play',10000);
 
   $('.date-slash').each(function (i, ele) {
     var formatted = moment(ele.innerHTML).utc().format('M/D/YYYY');
