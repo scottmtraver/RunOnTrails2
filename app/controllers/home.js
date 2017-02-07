@@ -42,7 +42,7 @@ module.exports = function (app) {
 
 //Routes
 router.get('/', function (req, res, next) {
-  var racesP = Race.find({}).sort('date');
+  var racesP = Race.find({"date" : { $gte : new Date('2017-01-01:Z12:00:00') }}).sort('date');
   var homepageP = Homepage.find({});
   var today = new Date();
   var yesterday = new Date(today.setDate(today.getDate() - 1));
@@ -95,7 +95,7 @@ router.get('/registration', function (req, res, next) {
 router.get('/results', function (req, res, next) {
   var today = new Date();
   var yesterday = new Date(today.setDate(today.getDate() - 1));
-  Race.find({}).sort('date').then(function (races) {//get all
+  Race.find({"date" : { $gte : new Date('2017-01-01:Z12:00:00') }}).sort('date').then(function (races) {//get all
     var temp = _.find(races, function (r) { return r.date > yesterday });
     if(temp) {
       temp.nextRace = true;
@@ -104,6 +104,21 @@ router.get('/results', function (req, res, next) {
     res.render('results', req.base);
   });
 });
+//2016 results
+router.get('/2016Results', function (req, res, next) {
+  var today = new Date();
+  var yesterday = new Date(today.setDate(today.getDate() - 1));
+  Race.find({"date" : { $lte : new Date('2017-01-01:Z12:00:00') }}).sort('date').then(function (races) {//get all
+    var temp = _.find(races, function (r) { return r.date > yesterday });
+    if(temp) {
+      temp.nextRace = true;
+    }
+    extend(req.base, { races: races });
+    res.render('results', req.base);
+  });
+});
+
+
 
 router.get('/race/:id', function (req, res, next) {
   //Depricated route using race id
