@@ -1,4 +1,5 @@
 var Venue = require('./venue');
+var Sponsor = require('./sponsor');
 var mongoose = require('mongoose'),
  Schema = mongoose.Schema;
 
@@ -15,7 +16,8 @@ var RaceSchema = new Schema({
   resultsUrl: String,
   courseDescription: String,
   special: String,
-  venue: Venue
+  venue: Venue,
+  sponsor: Sponsor,
 });
 
 mongoose.model('Race', RaceSchema);

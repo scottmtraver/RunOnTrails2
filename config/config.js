@@ -10,7 +10,7 @@ var config = {
       name: 'runontrails'
     },
     port: 3000,
-    db: 'dockerDev:27017/RunOnTrails',
+    db: 'localhost:27017/RunOnTrails',
     redirects: redirects
   },
 

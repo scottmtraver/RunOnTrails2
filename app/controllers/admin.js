@@ -150,21 +150,27 @@ router.get('/race/:id', isLoggedIn, function (req, res, next) {
   if(req.params.id && req.params.id != 0) {
     Race.findById(req.params.id).then(function (race) {
       Venue.find({}).then(function (venues) {
-        res.render('admin/race', {
-          title: 'Wasatch Trail Series Admin: Sponsors',
-          layout: 'admin',
-          race: race,
-          venueList: venues
+        Sponsor.find({}).then(function (sponsors) {
+          res.render('admin/race', {
+            title: 'Wasatch Trail Series Admin: Sponsors',
+            layout: 'admin',
+            race: race,
+            venueList: venues,
+            sponsorList: sponsors
+          });
         });
       });
     });
   } else {
     Venue.find({}).then(function (venues) {
-      res.render('admin/race', {
-        title: 'Wasatch Trail Series Admin: Sponsors',
-        layout: 'admin',
-        race: {},
-        venueList: venues
+      Sponsor.find({}).then(function (sponsors) {
+        res.render('admin/race', {
+          title: 'Wasatch Trail Series Admin: Sponsors',
+          layout: 'admin',
+          race: {},
+          venueList: venues,
+          sponsorList: sponsors
+        });
       });
     });
   }
@@ -184,50 +190,56 @@ router.post('/race', isLoggedIn, function (req, res, next) {
   var seodate = moment(req.body.date).format("MMM D YYYY").replace(/\s+/g, '-');
   if(!req.body.id || req.body.id == 0) {
     Venue.findById(req.body.venueID).then(function (venue) {
-      var race = new Race({
-        name: req.body.name,
-        date: req.body.date,
-        seodate: seodate,
-        seriesNum: req.body.seriesNum,
-        registrationTime: req.body.registrationTime,
-        startTime: req.body.startTime,
-        cost: req.body.cost,
-        distances: req.body.distances,
-        courseUrl: filename,
-        resultsUrl: resultsUrl,
-        courseDescription: req.body.courseDescription,
-        special: req.body.special,
-        venue: venue
-      });
-      race.save().then(function () {
-        req.flash('message', 'Race Saved!');
-        res.redirect('/admin/races');
+      Sponsor.findById(req.body.sponsorID).then(function (sponsor) {
+        var race = new Race({
+          name: req.body.name,
+          date: req.body.date,
+          seodate: seodate,
+          seriesNum: req.body.seriesNum,
+          registrationTime: req.body.registrationTime,
+          startTime: req.body.startTime,
+          cost: req.body.cost,
+          distances: req.body.distances,
+          courseUrl: filename,
+          resultsUrl: resultsUrl,
+          courseDescription: req.body.courseDescription,
+          special: req.body.special,
+          venue: venue,
+          sponsor: sponsor,
+        });
+        race.save().then(function () {
+          req.flash('message', 'Race Saved!');
+          res.redirect('/admin/races');
+        });
       });
     });
   } else {
     Race.findById(req.body.id).then(function (race) {
       Venue.findById(req.body.venueID).then(function (venue) {
-        race.name = req.body.name;
-        race.date = req.body.date;
-        race.seodate = seodate,
-          race.seriesNum = req.body.seriesNum;
-        race.registrationTime = req.body.registrationTime;
-        race.startTime = req.body.startTime;
-        race.cost = req.body.cost;
-        race.distances = req.body.distances;
-        if(filename) {
-          race.courseUrl = filename;
-        }
-        if(resultsUrl) {
-          race.resultsUrl = resultsUrl
-        }
-        race.courseDescription = req.body.courseDescription;
-        race.special = req.body.special;
-        race.venue = venue;
+        Sponsor.findById(req.body.sponsorID).then(function (sponsor) {
+          race.name = req.body.name;
+          race.date = req.body.date;
+          race.seodate = seodate,
+            race.seriesNum = req.body.seriesNum;
+          race.registrationTime = req.body.registrationTime;
+          race.startTime = req.body.startTime;
+          race.cost = req.body.cost;
+          race.distances = req.body.distances;
+          if(filename) {
+            race.courseUrl = filename;
+          }
+          if(resultsUrl) {
+            race.resultsUrl = resultsUrl
+          }
+          race.courseDescription = req.body.courseDescription;
+          race.special = req.body.special;
+          race.venue = venue;
+          race.sponsor = sponsor;
 
-        race.save().then(function () {
-          req.flash('message', 'Race Saved!');
-          res.redirect('/admin/races');
+          race.save().then(function () {
+            req.flash('message', 'Race Saved!');
+            res.redirect('/admin/races');
+          });
         });
       });
     });
