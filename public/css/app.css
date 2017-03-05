@@ -92,6 +92,18 @@ ul.dropdown.menu a {
     font-weight: 700;
     margin-top: 50px;
   }
+  .mobile-card-one {
+    min-height: 200px;
+    background-image: url("../img/Banner-Utah-Race-Series.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .mobile-card-two {
+    min-height: 200px;
+    background-image: url("../img/Homepage-background-photo-Utah-Race-Series.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
   .hero-image {
     height: 500px
   }
