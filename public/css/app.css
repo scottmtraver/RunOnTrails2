@@ -3,10 +3,10 @@ body {
 }
 
 a {
-  color: orangered;
+  color: #0C5D42;
 }
 ul.dropdown.menu a {
-  color: orangered;
+  color: #0C5D42;
 }
 
 .main {
@@ -56,7 +56,7 @@ ul.dropdown.menu a {
     left: 130px;
     font-size: 16px;
     font-weight: bold;
-    color: orangered;
+    color: #0C5D42;
     top: 12px;
   }
   .hero-image {
@@ -86,7 +86,7 @@ ul.dropdown.menu a {
     position: absolute;
     text-align: center;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
-    color: orangered;
+    color: #0C5D42;
   }
   .mobile-title h2 {
     font-weight: 700;
@@ -115,7 +115,7 @@ ul.dropdown.menu a {
 }
 
 .hero-image {
-  background-image: url("../img/wasatchRunning.jpg");
+  background-image: url("../img/Homepage-background-photo-Utah-Race-Series.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -125,7 +125,7 @@ ul.dropdown.menu a {
   z-index: 1;
   position: absolute;
   width: 100%;
-  color: orangered;
+  color: #0C5D42;
   font-weight: 700;
   font-size: 56px;
 }
@@ -163,7 +163,7 @@ ul.dropdown.menu a {
   text-align: center;
 }
 .card h1 {
-  color: orangered;
+  color: #0C5D42;
 }
 .card-image {
   position: relative;
@@ -229,7 +229,7 @@ ul.dropdown.menu a {
 }
 .home-registration {
   display: block;
-  color: orangered;
+  color: #0C5D42;
   margin-top: 15px;
   text-align: center;
 }

@@ -12,7 +12,7 @@ var express = require('express'),
 
 //middleware
 var base = {
-  title: 'Wasatch Trail Series',
+  title: 'Utah Race Series',
   helpers: {
     nsponsors: function(ary, max, options) {
       if(!ary || ary.length == 0)
