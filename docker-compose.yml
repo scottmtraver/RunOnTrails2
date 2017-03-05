@@ -1,0 +1,17 @@
+version: "2"
+services:
+  utahroadseriesdb:
+    image: mongo:latest
+  uploads:
+    image: busybox:latest
+    volumes:
+      - /usr/src/public/uploads
+  utahraceseries:
+    environment:
+      - NODE_ENV=production
+    image: scottmtraver/runonroads
+    ports:
+      - 80:3000
+    volumes_from:
+      - uploads
+

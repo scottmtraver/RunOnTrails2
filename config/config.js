@@ -30,7 +30,7 @@ var config = {
       name: 'utahroadseries'
     },
     port: 3000,
-    db: 'utahroadseries:27017/utahroadseries',
+    db: 'utahroadseriesdb:27017/utahroadseries',
     redirects: redirects
   }
 };
