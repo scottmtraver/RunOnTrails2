@@ -30,20 +30,6 @@
       </a>
       <h4 class="race-special">{{ race.name }}</h4>
     </div>
-    <div class="large-4 columns sponsor show-for-large">
-      <h4>Sponsor</h4>
-      {{#if race.sponsor }}
-        <a href="{{ race.sponsor.url }}" target="_blank">
-          <img class="sponsor-image" src="/uploads/{{ race.sponsor.logoUrl }}" alt="Sponsor" />
-        </a>
-        <h4>{{ race.sponsor.name }}</h4>
-      {{else}}
-        <a href="{{ raceSponsor.url }}" target="_blank">
-          <img class="sponsor-image" src="/uploads/{{ raceSponsor.logoUrl }}" alt="Sponsor" />
-        </a>
-        <h4>{{ raceSponsor.name }}</h4>
-      {{/if}}
-    </div>
   </div>
   <hr/>
 </div>

@@ -1,54 +1,13 @@
 <div class="row show-for-medium">
   <div class="medium-11 medium-centered columns">
     <div class="owl-carousel hero-flipper"> 
-      <!--
-      <div class="next-race-card item">
-        <div classs="row">
-          <div class="medium-12 columns">
-            <h3>Next Race: <span class="date">{{ nextRace.date }}</span></h3>
-          </div>
-          <div class="small-6 columns race-info">
-            <div class="row">
-              <div class="small-12 columns">
-                <span>Location: <a style="display:inline;" href="{{ nextRace.venue.directionsUrl }}">{{ nextRace.venue.name }}</a></span>
-              </div>
-              <div class="small-12 columns">
-                <span>Registration: {{ nextRace.registrationTime }}</span>
-              </div>
-              <div class="small-12 columns">
-                <span>Race Start: {{ nextRace.startTime }}</span>
-              </div>
-              <div class="small-12 columns">
-                <span>Cost: {{ nextRace.cost }}</span>
-              </div>
-              <div class="small-12 columns">
-                <span>Distance: {{ nextRace.distances }}</span>
-              </div>
-              <div class="small-12 columns">
-                <a href="/race/{{ nextRace.seodate }}">More Info</a>
-              </div>
-            </div>
-          </div>
-          <div class="small-6 columns">
-            <a href="{{ nextRace.venue.url }}" target="_blank">
-              <img class="venue-image" src="/uploads/{{ nextRace.venue.logoUrl }}" alt="Venue" />
-            </a>
-            <h4 class="race-special">{{ nextRace.name }}</h4>
-          </div>
-        </div>
-      </div>
-      -->
+
       <div class="item">
         <div class="card row">
           <img class="card-background" src="/img/solitudecard.jpg" alt="Running!" />
           <div class="medium-12 columns">
             <h3>{{{ homepage.card1Text }}}</h3>
           </div>
-          <!--
-          <div class="medium-4 columns">
-            <img class="card-image" src="/uploads/{{ homepage.card1Image }}" alt="Trails" />
-          </div>
-          -->
         </div>
       </div>
       <div class="item">
@@ -57,11 +16,6 @@
           <div class="medium-12 columns">
             <h3>{{{ homepage.card2Text }}}</h3>
           </div>
-          <!--
-          <div class="medium-4 columns">
-            <img class="card-image" src="/uploads/{{ homepage.card1Image }}" alt="Trails" />
-          </div>
-          -->
         </div>
       </div>
     </div>
@@ -83,22 +37,6 @@
         </div>
       </div>
 
-        <!--
-        <div class="medium-12 columns">
-          <h5>Next Race:<span class="date" style="display:inline;">{{ nextRace.date }}</span></h5>
-        </div>
-        <div class="small-6 columns">
-          <span>Location: <a style="display:inline;" href="{{ nextRace.venue.directionsUrl }}">{{ nextRace.venue.name }}</a></span>
-          <span>Registration: {{ nextRace.registrationTime }}</span>
-          <span>Race Start: {{ nextRace.startTime }}</span>
-        </div>
-        <div class="small-6 columns">
-          <a href="{{ nextRace.venue.url }}" target="_blank">
-            <img class="venue-image-mobile" src="/uploads/{{ nextRace.venue.logoUrl }}" alt="Venue" />
-          </a>
-          <a href="/race/{{ nextRace.seodate }}">More Info</a>
-        </div>
-        -->
     </div>
   </div>
 </div>
@@ -107,7 +45,7 @@
   <div class="medium-12 small-12 columns home-main">
     <div class="medium-12 columns">
       <div class="row">
-        <div class="medium-5 small-5 columns">
+        <div class="medium-8 small-8 columns">
           <div class="readmore-mobile">
             {{{ homepage.mainText }}}
           </div>
@@ -131,23 +69,12 @@
             Email
           </a>
         </div>
-        <div class="medium-3 small-12 columns">
-          <div class="flex-video">
-            {{{ homepage.homepageVideo }}}
-          </div>
-          <div class="row">
-            <div class="small-6 columns">
-              </div>
-              <div class="small-6 columns">
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
   <div class="medium-12 small-12 columns home-main">
     <div class="row home-races">
-      <div class="medium-8 small-12 columns">
+      <div class="medium-12 small-12 columns">
         <a name="Races"></a>
         <h2>Races</h2>
         <hr/>
@@ -183,15 +110,6 @@
               {{/each}}
             </tbody>
           </table>
-        </div>
-        <div class="medium-3 small-12 columns right-sponsors">
-          <h2>Sponsors</h2>
-          <hr/>
-          {{#nsponsors sponsors 3}}
-          <a href="{{ url }}" target="_blank" class="side-sponsor">
-            <img class="sponsor-thumbnail" src="/uploads/{{ logoUrl }}"/>
-          </a>
-          {{/nsponsors}}
         </div>
       </div>
     </div>

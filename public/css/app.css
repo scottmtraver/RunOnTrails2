@@ -3,7 +3,10 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: orangered;
+}
+ul.dropdown.menu a {
+  color: orangered;
 }
 
 .main {
@@ -53,7 +56,7 @@ a {
     left: 130px;
     font-size: 16px;
     font-weight: bold;
-    color: #2199e8;
+    color: orangered;
     top: 12px;
   }
   .hero-image {
@@ -83,7 +86,7 @@ a {
     position: absolute;
     text-align: center;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
-    color: #2BB7EA;
+    color: orangered;
   }
   .mobile-title h2 {
     font-weight: 700;
@@ -122,7 +125,7 @@ a {
   z-index: 1;
   position: absolute;
   width: 100%;
-  color: #2BB7EA;
+  color: orangered;
   font-weight: 700;
   font-size: 56px;
 }
@@ -160,7 +163,7 @@ a {
   text-align: center;
 }
 .card h1 {
-  color: red;
+  color: orangered;
 }
 .card-image {
   position: relative;
@@ -226,7 +229,7 @@ a {
 }
 .home-registration {
   display: block;
-  color: red;
+  color: orangered;
   margin-top: 15px;
   text-align: center;
 }

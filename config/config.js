@@ -7,30 +7,30 @@ var config = {
   development: {
     root: rootPath,
     app: {
-      name: 'runontrails'
+      name: 'utahroadseries'
     },
     port: 3000,
-    db: 'localhost:27017/RunOnTrails',
+    db: 'localhost:27017/utahroadseries',
     redirects: redirects
   },
 
   test: {
     root: rootPath,
     app: {
-      name: 'runontrails'
+      name: 'utahroadseries'
     },
     port: 3000,
-    db: 'development:27017/RunOnTrails-development',
+    db: 'development:27017/utahroadseries-development',
     redirects: redirects
   },
 
   production: {
     root: rootPath,
     app: {
-      name: 'runontrails'
+      name: 'utahroadseries'
     },
     port: 3000,
-    db: 'runontrailsdb:27017/RunOnTrails',
+    db: 'utahroadseries:27017/utahroadseries',
     redirects: redirects
   }
 };

@@ -26,7 +26,7 @@ module.exports = function (app) {
 //Login/Logout
 //Default User
 router.get('/initialize', function(req, res, next) {
-  Account.register(new Account({ username : 'runontrails' }), 'runontrails', function(err, account) {
+  Account.register(new Account({ username : 'utahraceseries' }), 'utahraceseries', function(err, account) {
     passport.authenticate('local')(req, res, function () {
       req.session.save(function (err) {
         if (err) {

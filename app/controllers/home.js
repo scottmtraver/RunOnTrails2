@@ -25,18 +25,7 @@ var base = {
   }
 };
 
-function pageTemplate (req, res, next) {
-  Sponsor.find({}).then(function (sponsors) {
-    req.base = {};
-    extend(true, req.base, base);
-    req.base.sponsors = _.sample(sponsors, 10);
-    req.base.allSponsors = sponsors;
-    next();
-  });
-}
-
 module.exports = function (app) {
-  app.use(pageTemplate);
   app.use('/', router);
 };
 
