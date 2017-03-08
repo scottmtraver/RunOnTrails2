@@ -62,7 +62,7 @@ router.get('/', isLoggedIn, function (req, res, next) {
       display = homepage[0];
     }
     res.render('admin/index', {
-      title: 'Wasatch Trail Series Admin',
+      title: 'Utah Race Series Admin',
       layout: 'admin',
       homepage: display,
       message: req.flash('message')
@@ -73,7 +73,7 @@ router.get('/', isLoggedIn, function (req, res, next) {
 router.get('/sponsors', isLoggedIn, function (req, res, next) {
   Sponsor.find({}).then(function (sponsors) {
     res.render('admin/sponsors', {
-      title: 'Wasatch Trail Series Admin: Sponsors',
+      title: 'Utah Race Series Admin: Sponsors',
       layout: 'admin',
       sponsors: sponsors
     });
@@ -83,14 +83,14 @@ router.get('/sponsor/:id', isLoggedIn, function (req, res, next) {
   if(req.params.id && req.params.id != 0) {
     Sponsor.findById(req.params.id).then(function (sponsor) {
       res.render('admin/sponsor', {
-        title: 'Wasatch Trail Series Admin: Sponsors',
+        title: 'Utah Race Series Admin: Sponsors',
         layout: 'admin',
         sponsor: sponsor
       });
     });
   } else {
     res.render('admin/sponsor', {
-      title: 'Wasatch Trail Series Admin: Sponsors',
+      title: 'Utah Race Series Admin: Sponsors',
       layout: 'admin',
       sponsor: {}
     });
@@ -140,7 +140,7 @@ router.get('/deleteSponsor/:id', isLoggedIn, function (req, res, next) {
 router.get('/races', isLoggedIn, function (req, res, next) {
   Race.find({}).sort('date').then(function (races) {
     res.render('admin/races', {
-      title: 'Wasatch Trail Series Admin: Sponsors',
+      title: 'Utah Race Series Admin: Sponsors',
       layout: 'admin',
       races: races
     });
@@ -152,7 +152,7 @@ router.get('/race/:id', isLoggedIn, function (req, res, next) {
       Venue.find({}).then(function (venues) {
         Sponsor.find({}).then(function (sponsors) {
           res.render('admin/race', {
-            title: 'Wasatch Trail Series Admin: Sponsors',
+            title: 'Utah Race Series Admin: Sponsors',
             layout: 'admin',
             race: race,
             venueList: venues,
@@ -165,7 +165,7 @@ router.get('/race/:id', isLoggedIn, function (req, res, next) {
     Venue.find({}).then(function (venues) {
       Sponsor.find({}).then(function (sponsors) {
         res.render('admin/race', {
-          title: 'Wasatch Trail Series Admin: Sponsors',
+          title: 'Utah Race Series Admin: Sponsors',
           layout: 'admin',
           race: {},
           venueList: venues,
@@ -260,7 +260,7 @@ router.get('/deleteRace/:id', isLoggedIn, function (req, res, next) {
 router.get('/venues', isLoggedIn, function (req, res, next) {
   Venue.find({}).then(function (venues) {
     res.render('admin/venues', {
-      title: 'Wasatch Trail Series Admin: Venue',
+      title: 'Utah Race Series Admin: Venue',
       layout: 'admin',
       venues: venues
     });
@@ -270,14 +270,14 @@ router.get('/venue/:id', isLoggedIn, function (req, res, next) {
   if(req.params.id && req.params.id != 0) {
     Venue.findById(req.params.id).then(function (venue) {
       res.render('admin/venue', {
-        title: 'Wasatch Trail Series Admin: Venue',
+        title: 'Utah Race Series Admin: Venue',
         layout: 'admin',
         venue: venue
       });
     });
   } else {
     res.render('admin/venue', {
-      title: 'Wasatch Trail Series Admin: Venue',
+      title: 'Utah Race Series Admin: Venue',
       layout: 'admin',
       venue: {}
     });
@@ -363,7 +363,7 @@ router.post('/homepage', isLoggedIn, function (req, res, next) {
 router.get('/gallery', isLoggedIn, function (req, res, next) {
   Gallery.find({}).then(function (images) {
     res.render('admin/gallery', {
-      title: 'Wasatch Trail Series Admin: Photo Gallery',
+      title: 'Utah Race Series Admin: Photo Gallery',
       layout: 'admin',
       photos: images
     });

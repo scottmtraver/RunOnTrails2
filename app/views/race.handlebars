@@ -2,7 +2,7 @@
 <div class="row race-main">
   <div classs="row">
 
-    <div class="small-12 large-4 columns race-info">
+    <div class="small-12 large-6 columns race-info center">
       <div class="row">
         <div class="small-12 columns">
           <h3 class="date">{{ race.date }}</h3>
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div class="small-12 large-4 columns">
+    <div class="small-12 large-6 columns center">
       <a href="{{ race.venue.url }}" target="_blank">
         <img class="venue-image" src="/uploads/{{ race.venue.logoUrl }}" alt="Venue" />
       </a>
@@ -42,13 +42,13 @@
   </br>
 </div>
 {{/if}}
-  <div class="small-5 large-offset-1 columns">
+  <div class="small-12 columns">
     <h4>Course:</h4>
     <p>
       {{{ race.courseDescription }}}
     </p>
   </div>
-  <div class="small-5 columns">
+  <div class="small-12 columns">
     {{#if race.courseUrl }}
       <img class="course-image" src="/uploads/{{ race.courseUrl }}" alt="Course" />
     {{/if}}

@@ -93,16 +93,16 @@ ul.dropdown.menu a {
     margin-top: 50px;
   }
   .mobile-card-one {
-    min-height: 200px;
+    min-height: 130px;
     background-image: url("../img/Banner-Utah-Race-Series.jpg");
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
   }
   .mobile-card-two {
-    min-height: 200px;
+    min-height: 150px;
     background-image: url("../img/Homepage-background-photo-Utah-Race-Series.jpg");
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
   }
   .hero-image {
     height: 500px
@@ -123,6 +123,9 @@ ul.dropdown.menu a {
   .card-background {
     max-width: inherit;
     width: inherit;
+  }
+  .owl-controls {
+    display: none !important;
   }
 }
 
@@ -156,7 +159,6 @@ ul.dropdown.menu a {
   display: inline-block;
 }
 .hero-flipper-mobile * {
-  display: block;
   overflow: hidden;
 }
 .hero-flipper-mobile a {
@@ -212,6 +214,11 @@ ul.dropdown.menu a {
 }
 .sponsor {
   border-left: 1px solid grey;
+}
+.homepage-image {
+  position: absolute;
+  top: -200px;
+  height: 200px;
 }
 .home-sponsor {
   position: relative;
