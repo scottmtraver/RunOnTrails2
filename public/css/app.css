@@ -41,7 +41,6 @@ ul.dropdown.menu a {
 .card-background {
   position: absolute;
   z-index: -1;
-  opacity: .5;
   height: 340px;
   width: 100%;
   overflow: hidden;
@@ -89,14 +88,16 @@ ul.dropdown.menu a {
     color: #0C5D42;
   }
   .mobile-title h2 {
-    font-weight: 700;
-    margin-top: 50px;
+    font-weight: 800;
+    margin-top: 40px;
+    font-size: 32px;
   }
   .mobile-card-one {
     min-height: 130px;
     background-image: url("../img/Banner-Utah-Race-Series.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
   }
   .mobile-card-two {
     min-height: 150px;
@@ -108,7 +109,6 @@ ul.dropdown.menu a {
     height: 500px
   }
   .readmore-mobile {
-    height: 300px;
     overflow: hidden;
   }
   .readmore-mobile.open {
@@ -136,13 +136,13 @@ ul.dropdown.menu a {
 }
 .hero-image h1 {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 40px;
   z-index: 1;
   position: absolute;
   width: 100%;
   color: #0C5D42;
   font-weight: 700;
-  font-size: 56px;
+  font-size: 94px;
 }
 
 .hero-flipper {
