@@ -35,6 +35,14 @@ a {
   position: absolute;
   z-index: 10;
 }
+.card-background {
+  position: absolute;
+  z-index: -1;
+  opacity: .5;
+  height: 340px;
+  width: 100%;
+  overflow: hidden;
+}
 @media (min-width: 600px) {
   .logo {
     left: 20px;
@@ -81,6 +89,9 @@ a {
     font-weight: 700;
     margin-top: 50px;
   }
+  .owl-controls {
+    display: none !important;
+  }
   .hero-image {
     height: 500px
   }
@@ -96,6 +107,10 @@ a {
     text-align: center;
     width: 100%;
     margin-bottom: 25px;
+  }
+  .card-background {
+    max-width: inherit;
+    width: inherit;
   }
 }
 
@@ -130,6 +145,7 @@ a {
 }
 .hero-flipper-mobile * {
   display: block;
+  overflow: hidden;
 }
 .hero-flipper-mobile a {
   text-align: center;
@@ -140,14 +156,7 @@ a {
   margin-left: 0px !important;
   margin-right: 0px !important;
 }
-.card-background {
-  position: absolute;
-  z-index: -1;
-  opacity: .5;
-  height: 340px;
-  width: 100%;
-  overflow: hidden;
-}
+
 .card h1, .card h3 {
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   width: 100%;
