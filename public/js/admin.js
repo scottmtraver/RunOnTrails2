@@ -14,6 +14,5 @@ $(document).ready(function () {
   //set sponsor
   var sid = $('#sponsorID').val();
   $('.sponsor-selector').val(sid);
-  $('.jquery-te').jqte();
 }); 
 
