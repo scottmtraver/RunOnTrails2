@@ -55,7 +55,6 @@
           <a class="home-races-link" href="#Races">
             <span>All Races</span>
           </a>
-          <hr/>
           <a class="social-link" href="https://www.facebook.com/Utah-Race-Series-1576614149023076" target="_blank">
             <i class="fi-social-facebook"></i>
             Facebook
@@ -64,6 +63,12 @@
             <i class="fi-mail"></i>
             Email Questions
           </a>
+          <hr />
+          <div class="row">
+            <div class="small-12 columns">
+              <img src="/img/AltraLogo.png" alt="logo" class="home-sponsor-below-video" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -86,23 +91,23 @@
           </thead>
           <tbody>
             {{#each races }}
-            {{#if nextRace}}
-            <tr class="next-race">
-              {{else}}
-              <tr>
-                {{/if}}
-                <td class="show-for-large">{{ name }}</td>
-                <td class="date-slash">{{ date }}</td>
-                <td>{{ startTime }}</td>
-                <td>{{ venue.name }}</td>
-                <td>
-                  {{#if resultsUrl }}
-                  <a href="/race/{{ seodate }}">Results</a>
-                  {{else}}
-                  <a href="/race/{{ seodate }}">Info</a>
+              {{#if nextRace}}
+                <tr class="next-race">
+                {{else}}
+                  <tr>
                   {{/if}}
-                </td>
-              </tr>
+                  <td class="show-for-large">{{ name }}</td>
+                  <td class="date-slash">{{ date }}</td>
+                  <td>{{ startTime }}</td>
+                  <td>{{ venue.name }}</td>
+                  <td>
+                    {{#if resultsUrl }}
+                      <a href="/race/{{ seodate }}">Results</a>
+                    {{else}}
+                      <a href="/race/{{ seodate }}">Info</a>
+                    {{/if}}
+                  </td>
+                </tr>
               {{/each}}
             </tbody>
           </table>
