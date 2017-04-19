@@ -5,8 +5,30 @@ var express = require('express'),
   mongoose = require('mongoose');
 var forceDomain = require('forcedomain');
 
+console.log('SMT ' + config.db);
 mongoose.connect(config.db);
 var db = mongoose.connection;
+
+// Logging Mongoose
+// http://theholmesoffice.com/mongoose-connection-best-practice/
+// CONNECTION EVENTS
+// When successfully connected
+mongoose.connection.on('connected', function () {  
+  console.log('Mongoose default connection open to ' + config.db);
+}); 
+
+// If the connection throws an error
+mongoose.connection.on('error',function (err) {  
+  console.log('Mongoose default connection error: ' + err);
+}); 
+
+// When the connection is disconnected
+mongoose.connection.on('disconnected', function () {  
+  console.log('Mongoose default connection disconnected'); 
+});
+
+
+//Error handler
 db.on('error', function () {
   throw new Error('unable to connect to database at ' + config.db);
 });

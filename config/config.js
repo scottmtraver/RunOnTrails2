@@ -30,7 +30,7 @@ var config = {
       name: 'runontrails'
     },
     port: 3000,
-    db: 'runontrailsdb:27017/RunOnTrails',
+    db: process.env.RUNONTRAILSDB_PORT_27017_TCP_ADDR + ':27017/RunOnTrails',
     redirects: redirects
   }
 };
