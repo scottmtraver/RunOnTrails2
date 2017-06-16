@@ -231,6 +231,10 @@ router.post('/race', isLoggedIn, function (req, res, next) {
           if(resultsUrl) {
             race.resultsUrl = resultsUrl
           }
+          console.log(req.body.deleteResults);
+          if(req.body.deleteResults) {
+            race.resultsUrl = '' 
+          }
           race.courseDescription = req.body.courseDescription;
           race.special = req.body.special;
           race.venue = venue;

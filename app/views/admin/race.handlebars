@@ -86,6 +86,10 @@
               <span>Results Uploaded!</span>
             {{/if}}
           </label>
+            {{#if race.resultsUrl }}
+              <span>Delete</span>
+              <input type="checkbox" placeholder="" name="deleteResults" />
+            {{/if}}
         </div>
       </div>
       <input type="submit" value="Submit" class="button"/>
